@@ -1,10 +1,10 @@
-// import logo from './logo.svg';
 import './App.css';
+import Plannerpage from './pages/Plannerpage'
 
 function App() {
   return (
     <div className="App">
-      <div>HelloWorld!</div>
+      <Plannerpage />
     </div>
   );
 }
