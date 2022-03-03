@@ -1,18 +1,23 @@
 // import logo from './logo.svg';
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import Mainpage from './pages/Mainpage';
 import Metetest from './components/metatest/Metatest';
-import Nav from './components/Nav';
 import Footer from './components/Footer';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Nav></Nav>
-      <Mainpage></Mainpage>
-      <Metetest></Metetest>
-      <Footer></Footer>
+      <Switch>
+        <Route exact path="/">
+          <Mainpage />
+          <div className="Second-page">
+            <Metetest></Metetest>
+            <Footer></Footer>
+          </div>
+        </Route>
+      </Switch>    
     </div>
   );
 }

@@ -43,101 +43,8 @@
 /* 전체적인 폰트스타일 변경 가능 */
 .App{
   font-family:'Times New Roman';
-}
-
-
-.product-container {
-  display: flex;
-  width: 80%;
-  max-width: 1000px;
-  margin: auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  
-  
-}
-.product-container div{
-  width: 30%;
-  text-align: center;
-}
-
-@media screen and (max-width:500px){
-  .product-container{
-      align-items: center;
-      flex-direction: column;
-  }        
-  
-   .product-container div{
-      width: 10%;
-  }      
-}
-
-.product-content {
-  padding: 10px;
-}
-
-.product-container i {
-background-color: burlywood;
-width: 100px;
-height: 100px;
-border-radius: 50px;
-padding-top: 25px;
-box-sizing: border-box;
-color: aliceblue;
-}
-
-.shop-bg {
-  background-color: #eee;
-  padding: 20px;
-}
-
-.shop-container {
-  display: flex;
-  width: 90%;
-  margin: auto;
-}
-
-.shop-image {
-  width: 33%;
-  padding: 10px;
-}
-
-.shop-image img{
- display: block;
-}
-
-.shop-image img{
-  width: 100%;
-}
-
-.overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background:rgba(0,0,0,0.3);
-/*    투명방식*/
-  opacity: 0;
-  transition: all 1s;
-  transition-timing-function: cubic-beziercubic-bezier()
-}
-.overlay:hover{
-  opacity: 1;
-}
-
-
-.overlay-half{
-  margin-top:50%; 
-  position: absolute;
-  width: 100%;
-  height: 50%;
-  background:rgba(0,0,0,0.3);
-/*    투명방식*/
-  opacity: 0;
-  transition: all 1s;
-  text-align: center;
-}
-.overlay-half:hover{
-  opacity: 1;
+  width:100%;
+  height:500px;
 }
 
 .nav-container {
@@ -147,7 +54,7 @@ color: aliceblue;
   padding: 10px;
   margin-top: 0px; 
   background-color: grey;
-  color: black;
+  color: white;
   font-size: 20px;
 }
 
@@ -162,12 +69,16 @@ color: aliceblue;
 .mainpage{
   width: 100%;
   /* border: 1px solid red; */
-
+  /* height: 600px; */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid black;
 }
 
 .footer-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   height: 60px;
   align-items: center;
   padding: 10px;
@@ -183,6 +94,8 @@ color: aliceblue;
 .mainpage-container{
   /* border: 1px solid black; */
   padding: 20px;
+  width: 40%;
+
 }
 
 .mainpage-title {
@@ -192,7 +105,7 @@ color: aliceblue;
 }
 
 .mainpage-content{
-  text-align: center;
+  border: 1px solid black;
 }
 
 .mainpage-test-btn{
@@ -208,20 +121,22 @@ color: aliceblue;
 
 .metapage{
   width: 100%;
-  height: 500px;
+  /* height: 500px; */
   /* border: 1px solid blue; */
   margin-bottom: 0px;
   background-color: #eee;
+  /* position: relative;
+  top:-200px; */
   
 }
 
 .metapage-test-container{
   padding: 1em;
   width: 100%;
-  height: 500px;
   display: flex;
   align-items: center;
   flex-direction: column;
+  border: 1px solid black;
 }
 
 .metapage-test-title{
@@ -243,3 +158,29 @@ color: aliceblue;
 
 }
 
+.sign-page{
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: white;
+  text-align: center;
+}
+
+.signpage-container{
+  width: 300px;
+  height: 350px;
+  margin: auto;
+  position: relative;
+  top:-360px;
+}
+
+.Second-page{
+  position: relative;
+  top: -355px;
+}
+
+.sign-form{
+  margin-top:10px;
+  margin-bottom:3px;
+}
