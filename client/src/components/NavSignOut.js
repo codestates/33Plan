@@ -1,8 +1,18 @@
 import React from 'react';
 
-function Nav () {
+function NavSignIn () {
   /* TODO : Nav 만들기. */
-//리액트 라우터로 연결 해야 할것 
+  
+  // const SignInClick = function (){
+  //   SignInHandler()
+  // }
+
+  // const SignUpClick = function (){
+  //   SignUpHandler()
+  // }
+
+
+
   return (
     <div>
       <nav className="nav-container">
@@ -11,11 +21,10 @@ function Nav () {
         <div className="nav-flex"></div>
         <div className="nav-item">Meta-test</div>
         <div className="nav-item">Planner</div>
-        <div className="nav-item">Sign-Up</div>
-        <div className="nav-item">Sign-In</div>
+        <div className="nav-item">Sign-Out</div>
       </nav>
     </div>
   );
 }
 
-export default Nav;
+export default NavSignIn;
