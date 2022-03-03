@@ -11,7 +11,7 @@ module.exports = {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      res.status(422).send("insufficient parameters supplied");
+      res.status(400).send("email 또는 password 입력이 올바르지 않습니다");
     } else {
       try {
         const userData = await users.findOne({
@@ -22,7 +22,7 @@ module.exports = {
         });
 
         if (!userData) {
-          res.status(400).send("Invalid user");
+          res.status(404).send("일치하는 유저정보를 찾을 수 없습니다");
         } else {
           const { id, nickname, email, createdAt, updatedAt } =
             userData.dataValues;

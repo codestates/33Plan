@@ -16,12 +16,10 @@ module.exports = {
   post: async (req, res) => {
     const { nickname, email, password } = req.body;
 
-    if (!nickname || !email || !password) {
-      res.status(422).send("insufficient parameters supplied");
-    } else if (!validateEmail(email)) {
-      res.status(400).send("이메일 형식에 맞지 않습니다");
+    if (!validateEmail(email)) {
+      res.status(400).send({ message: "이메일 형식에 맞지 않습니다" });
     } else if (!validatePW(password)) {
-      res.status(400).send("비밀번호 형식에 맞지 않습니다");
+      res.status(400).send({ message: "비밀번호 형식에 맞지 않습니다" });
     } else {
       // 유효성 검사 통과한 경우
       // 1. 데이터베이스에 중복되는 내용 있는지 확인 후 없으면 데이터 삽입
@@ -36,7 +34,7 @@ module.exports = {
         });
 
         if (!created) {
-          res.status(409).send("email already exists");
+          res.status(409).send({ message: "email or nickname already exists" });
         } else {
           const { id, nickname, email, updatedAt, createdAt } =
             userData.dataValues;
@@ -67,7 +65,7 @@ module.exports = {
               secure: true,
               sameSite: "none",
             })
-            .send("Successfully Signed Up");
+            .send({ message: "Successfully Signed Up" });
         }
       } catch (error) {
         console.error(error);
