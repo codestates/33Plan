@@ -8,18 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id: {
-        type: Sequelize.INTEGER
-      },
-      good_id: {
-        type: Sequelize.INTEGER
-      },
-      trying_id: {
-        type: Sequelize.INTEGER
-      },
-      bad_id: {
-        type: Sequelize.INTEGER
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

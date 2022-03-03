@@ -11,16 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.hasMany(models.goods);
+      this.hasMany(models.tryings);
+      this.hasMany(models.bads);
     }
   }
-  countPerWeek.init({
-    id: DataTypes.INTEGER,
-    good_id: DataTypes.INTEGER,
-    trying_id: DataTypes.INTEGER,
-    bad_id: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'countPerWeek',
-  });
+  countPerWeek.init(
+    {
+      sequelize,
+      modelName: 'countPerWeek',
+    });
   return countPerWeek;
 };
