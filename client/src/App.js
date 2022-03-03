@@ -1,10 +1,11 @@
-// import logo from './logo.svg';
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Mainpage from './pages/Mainpage';
 import Metetest from './components/metatest/Metatest';
 import Footer from './components/Footer';
+
 import './App.css';
+import Plannerpage from './pages/Plannerpage'
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
             <Metetest></Metetest>
             <Footer></Footer>
           </div>
+        </Route>
+        <Route exact path="/planner">
+          <Plannerpage />
         </Route>
       </Switch>    
     </div>
