@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   bads.init({
+  }, {
     sequelize,
     modelName: 'bads',
   });
