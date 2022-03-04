@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function NavSignIn ({SignUpHandler, SignInHandler}) {
+function NavSignIn ({SignUpHandler, SignInHandler, MetaTestHandler}) {
   /* TODO : Nav 만들기. */
   
   const SignInClick = function (){
@@ -11,7 +11,10 @@ function NavSignIn ({SignUpHandler, SignInHandler}) {
   const SignUpClick = function (){
     SignUpHandler()
   }
-
+ 
+  const MetaTestClick = function (){
+    MetaTestHandler()
+  }
 
 
   return (
@@ -22,7 +25,7 @@ function NavSignIn ({SignUpHandler, SignInHandler}) {
           <div className="nav-item">33plan</div>
         </Link>
         <div className="nav-flex"></div>
-        <div className="nav-item">Meta-test</div>
+        <div className="nav-item" onClick={MetaTestClick}>Meta-test</div>
         <div className="nav-item">Planner</div>
         <div className="nav-item" onClick={SignUpClick}>Sign-Up</div>
         <div className="nav-item" onClick={SignInClick}>Sign-In</div>

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './Metatest.css';
 
 function Metatest () {
   /* TODO : Mainpage 만들기. */
@@ -7,10 +7,11 @@ function Metatest () {
     <div className="metapage">
       <div className="metapage-test-container">
          <div className="metapage-test-title">
-             <h4>화면에 나타나는 33개의 단어중 기억하는 단어를 써주세요.</h4>
+             <h4>60초 동안 화면에 나타나는 30개의 단어중에</h4> 
+             <h4>기억하는 단어개수와 단어를 써주세요.</h4>
          </div>
-         <div className="metapage-test-title">
-             <h4 className="metapage-test-time">60초</h4>
+         <div>
+           <button className="metapage-test-start-btn"></button>
          </div>
          <div className="metapage-test-card">
              <div className="metapage-test-card-action">단어카드</div>
