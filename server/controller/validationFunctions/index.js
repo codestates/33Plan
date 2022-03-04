@@ -22,4 +22,9 @@ module.exports = {
       return true;
     }
   },
+  validatePhone: (phone_number) => {
+    const regPhone = /(01[0|1|6|9|7])[-](\d{3}|\d{4})[-](\d{4}$)/g;
+
+    return regPhone.test(phone_number);
+  },
 };
