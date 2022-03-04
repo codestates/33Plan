@@ -1,31 +1,37 @@
 import React, { useState } from "react";
 import PlanWriteModal from "../components/planner/PlanFormModal";
 import PlanStack from "../components/planner/PlanStats";
-import NavSignOut from "../components/NavSignOut"
+import NavSignOut from "../components/NavSignOut";
+import Mypage from "../components/sign/Mypage";
 
-function Plannerpage() {
-  const [isOpen, setIsOpen] = useState(false);
+function Plannerpage({ isOpenMypage, openMypageHandler }) {
+  const [isOpenPlan, setIsOpenPlan] = useState(false);
   const openModalHandler = () => {
-    setIsOpen(!isOpen);
+    setIsOpenPlan(!isOpenPlan);
     console.log("open");
   };
-  const [plan, setPlan] = useState({
+  const [planContent, setPlanContent] = useState({
     first: "",
     second: "",
     third: "",
   });
 
   const handleInputValue = (key) => (e) => {
-    setPlan({ ...plan, [key]: e.target.value });
+    setPlanContent({ ...planContent, [key]: e.target.value });
+    console.log(planContent);
+  };
+  console.log(planContent);
+
+  const handleClose = function () {
+    setIsOpenPlan(false)
   };
 
-  // const { first, second, third } = plan;
-
+  const { first, second, third } = planContent;
+  console.log(first);
   return (
     <div>
-      <NavSignOut/>
+      <NavSignOut openMypageHandler={openMypageHandler} />
       <div className="planner">
-
         <div className="plan-container">
           <div className="plan-header">
             <h1>오늘 wooga 님이 할 일</h1>
@@ -36,7 +42,7 @@ function Plannerpage() {
 
           <ul className="plan-list">
             <div className="plan-box">
-              <li>버튼 만들기</li>
+              <li>{first}</li>
               <div className="plan-btn-box">
                 <button className="plan-btn">good</button>
                 <button className="plan-btn">trying</button>
@@ -44,7 +50,7 @@ function Plannerpage() {
               </div>
             </div>
             <div className="plan-box">
-              <li>잘한 일/ 노력한 일/ 못한 일 레이아웃 만들기</li>
+              <li>{second}</li>
               <div className="plan-btn-box">
                 <button className="plan-btn">good</button>
                 <button className="plan-btn">trying</button>
@@ -52,7 +58,7 @@ function Plannerpage() {
               </div>
             </div>
             <div className="plan-box">
-              <li>스택 컴포넌트 만들기</li>
+              <li>{third}</li>
               <div className="plan-btn-box">
                 <button className="plan-btn">good</button>
                 <button className="plan-btn">trying</button>
@@ -61,7 +67,14 @@ function Plannerpage() {
             </div>
           </ul>
         </div>
-        {isOpen ? <PlanWriteModal handleInputValue={handleInputValue} /> : null}
+        {isOpenPlan ? (
+          <PlanWriteModal
+            handleInputValue={handleInputValue}
+            handleClose={handleClose}
+            planContent={planContent}
+          />
+        ) : null}
+        {isOpenMypage ? <Mypage /> : null}
 
         <div className="plan-analyse-container">
           <div className="plan-analyse-list">
