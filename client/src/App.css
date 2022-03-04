@@ -8,8 +8,8 @@ font-style: normal;
 .App {
   font-family: 'UhBeeKeongKeong';
   text-align: center;
-  width: 100%;
-  /* border: 1px solid #000; */
+  width: 100vw;
+  height: 100vh;
 }
 
 /*** Plannerpage ***/
@@ -203,11 +203,6 @@ font-style: normal;
 
 
 /* 전체적인 폰트스타일 변경 가능 */
-.App{
-  /* font-family:'Times New Roman'; */
-  width:100%;
-  height:500px;
-}
 
 .nav-container {
   display: flex;
@@ -321,12 +316,16 @@ font-style: normal;
 }
 
 .sign-page{
-  width: 100%;
-  height: 100%;
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: white;
-  text-align: center;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5); 
 }
 
 .signpage-container{
@@ -345,4 +344,36 @@ font-style: normal;
 .sign-form{
   margin-top:10px;
   margin-bottom:3px;
+}
+
+.sign-page-container{
+  background-color: white;
+  /* border: 1px solid #000; */
+  width: 30vw;
+  height: 35vh;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  line-height: 30px;
+  padding: 20px 5px;
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.205) ;
+  position: relative;
+}
+
+.signup-page-container{
+  background-color: white;
+  /* border: 1px solid #000; */
+  width: 30vw;
+  height: 50vh;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  line-height: 30px;
+  padding: 20px 5px;
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.205) ;
+  position: relative;
 }

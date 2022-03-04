@@ -8,7 +8,7 @@ function Signup ({handleClose}) {
   const [userinfo, setuserinfo] = useState({
     email: '',
     password: '',
-    username: '',
+    nickname: '',
     mobile: ''
   });
   const [errorMessage, setErrorMessage] = useState('');
@@ -23,8 +23,8 @@ function Signup ({handleClose}) {
     //        history.push("/");
     //
     // TODO : 모든 항목을 입력하지 않았을 경우 에러를 표시해야 합니다.
-    const {email, password, username, mobile} = userinfo
-    if(!email || !password || !username || !mobile) {
+    const {email, password, nickname, mobile} = userinfo
+    if(!email || !password || !nickname || !mobile) {
       return setErrorMessage("모든 항목은 필수입니다")
     }
     // console.log(userinfo)
@@ -49,7 +49,7 @@ function Signup ({handleClose}) {
 
   return (
     <div className="sign-page">
-    <center className="sign-form">
+    <center className="signup-page-container">
       <h1>Sign Up</h1>
       <div>모든 항목은 필수입니다</div>
       <form className="sign-form" onSubmit={(e) => e.preventDefault()}>
@@ -66,7 +66,7 @@ function Signup ({handleClose}) {
         </div>
         <div className="sign-form">
           <span>닉네임</span>
-          <input type='text' onChange={handleInputValue('username')}/>
+          <input type='text' onChange={handleInputValue('nickname')}/>
         </div>
         <div className="sign-form">
           {' '}
