@@ -1,7 +1,169 @@
-/* .App {
-  text-align: center;
+@font-face {
+font-family: 'UhBeeKeongKeong';
+src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeKeongKeong.woff') format('woff');
+font-weight: normal;
+font-style: normal;
 }
 
+.App {
+  font-family: 'UhBeeKeongKeong';
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+/*** Plannerpage ***/
+.planner {
+  /* border: 5px solid #000; */
+  margin-top: 100px;
+}
+.plan-container {
+  /* border: 2px solid blue; */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+.plan-header {
+  font-family: 'UhBeeKeongKeong';
+  display: flex;
+  /* border: 1px solid red; */
+  width: 600px;
+  justify-content:space-between;
+  align-items: center;
+}
+.plan-list {
+  /* border: 1px solid blue; */
+  width: 600px;
+  list-style: none;
+  padding-left: 0;
+}
+
+.plan-box {
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 10px;
+}
+
+.plan-list li {
+  /* border: 1px solid #000; */
+  width: 400px;
+  padding: 10px 0;
+  text-align: left;
+  
+}
+
+.plan-btn {
+  border: none;
+  border-radius: 10px;
+  margin-left: 5px;
+  padding: 3px 10px;
+}
+
+.plan-modal {
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 20px;
+  margin-top: 15px;
+}
+
+/*** plan-analyse-list ***/
+.plan-analyse-container {
+  /* border: 2px solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plan-analyse-box{
+  /* border: 1px solid #000; */
+  list-style: none;
+  padding-left: 0;
+  width: 600px;
+}
+.plan-analyse{
+  /* border: 1px solid #000; */
+  padding: 12px 0;
+  font-size: 16px;
+  text-align: left;
+  display: flex;
+}
+
+.plan-analyse-title {
+  /* border: 1px solid #000; */
+  font-family: 'UhBeeKeongKeong';
+  width: 120px;
+  font-weight: 800;
+}
+
+.plan-analyse-text {
+  /* border: 1px solid #000; */
+  text-align: left;
+  width: 500px;
+}
+.plan-analyse-text li {
+  padding-bottom: 5px;
+}
+
+/*** PlanFormModal ***/
+.modal-container {
+  position: fixed; 
+  z-index: 999; 
+  left: 0; 
+  top: 0; 
+  width: 100vw; 
+  height: 100vh; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  background: rgba(0, 0, 0, 0.5); 
+}
+
+.modal-from {
+  background-color: white;
+  /* border: 1px solid #000; */
+  width: 500px;
+  height: 200px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  line-height: 30px;
+  padding: 20px 5px;
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.205) ;
+  position: relative;
+}
+
+.modal-input {
+  width: 400px;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid #000;
+  outline: none;
+  margin: 5px;
+}
+
+.plan-write {
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 20px;
+  margin-top: 15px;
+}
+
+.btn {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+
+
+/*
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -38,3 +200,180 @@
 } */
 
 /* 추후 참고 자료 */
+
+
+/* 전체적인 폰트스타일 변경 가능 */
+
+.nav-container {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  padding: 10px;
+  margin-top: 0px; 
+  background-color: grey;
+  color: white;
+  font-size: 20px;
+}
+
+.nav-item {
+  margin: 10px;
+}
+
+.nav-flex{
+  flex-grow: 1;
+}
+
+.mainpage{
+  width: 100%;
+  /* border: 1px solid red; */
+  /* height: 600px; */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid black;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  height: 60px;
+  align-items: center;
+  padding: 10px;
+  background-color: grey;
+  color: black;
+  font-size: 15px;
+}
+
+.footer-item {
+  margin: 30px;
+}
+
+.mainpage-container{
+  /* border: 1px solid black; */
+  padding: 20px;
+  width: 40%;
+
+}
+
+.mainpage-title {
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+.mainpage-content{
+  border: 1px solid black;
+}
+
+.mainpage-test-btn{
+  text-align: center;
+  font-size:30px;
+  cursor: pointer;
+}
+
+.mainpage-test{
+  text-align: center;
+  padding: 30px;
+}
+
+.metapage{
+  width: 100%;
+  /* height: 500px; */
+  /* border: 1px solid blue; */
+  margin-bottom: 0px;
+  background-color: #eee;
+  /* position: relative;
+  top:-200px; */
+  
+}
+
+.metapage-test-container{
+  padding: 1em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid black;
+}
+
+.metapage-test-title{
+  text-align: center;
+
+}
+
+.metapage-test-time{
+  font-size: 40px;
+}
+
+.metapage-test-card{
+  width: 200px;
+  height: 100px;
+  background-color: white; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.sign-page{
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5); 
+}
+
+.signpage-container{
+  width: 300px;
+  height: 350px;
+  margin: auto;
+  position: relative;
+  top:-360px;
+}
+
+.Second-page{
+  position: relative;
+  top: -355px;
+}
+
+.sign-form{
+  margin-top:10px;
+  margin-bottom:3px;
+}
+
+.sign-page-container{
+  background-color: white;
+  /* border: 1px solid #000; */
+  width: 30vw;
+  height: 35vh;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  line-height: 30px;
+  padding: 20px 5px;
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.205) ;
+  position: relative;
+}
+
+.signup-page-container{
+  background-color: white;
+  /* border: 1px solid #000; */
+  width: 30vw;
+  height: 50vh;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  line-height: 30px;
+  padding: 20px 5px;
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.205) ;
+  position: relative;
+}
