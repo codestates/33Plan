@@ -13,21 +13,21 @@ module.exports = {
       type: Sequelize.INTEGER,
       references: {
         model: "todays",
-        key: "user_id"
+        key: "id"
       }
     })
     await queryInterface.addColumn("tryings", "today_id", {
       type: Sequelize.INTEGER,
       references: {
         model: "todays",
-        key: "user_id"
+        key: "id"
       }
     })
     await queryInterface.addColumn("bads", "today_id", {
       type: Sequelize.INTEGER,
       references: {
         model: "todays",
-        key: "user_id"
+        key: "id"
       }
     })
     await queryInterface.addColumn("countPerWeeks", "good_id", {

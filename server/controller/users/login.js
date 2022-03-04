@@ -37,18 +37,10 @@ module.exports = {
           const accessToken = sign(userInfo, process.env.ACCESS_SECRET, {
             expiresIn: 60 * 60,
           });
-          const refreshToken = sign(userInfo, process.env.REFRESH_SECRET, {
-            expiresIn: 60 * 60 * 24,
-          });
 
           res
             .status(200)
             .cookie("accessToken", accessToken, {
-              httpOnly: true,
-              secure: true,
-              sameSite: "none",
-            })
-            .cookie("refreshToken", refreshToken, {
               httpOnly: true,
               secure: true,
               sameSite: "none",
