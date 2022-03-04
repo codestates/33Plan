@@ -1,8 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-function NavSignIn () {
+function NavSignIn({ openMypageHandler }) {
   /* TODO : Nav 만들기. */
+  const openMypageClick = () => {
+    openMypageHandler();
+  };
   return (
     <div>
       <nav className="nav-container">
@@ -11,10 +14,15 @@ function NavSignIn () {
           <div className="nav-item">33plan</div>
         </Link>
         <div className="nav-flex"></div>
-        <div className="nav-item">Meta-test</div>
+        <Link to="/">
+          <div className="nav-item">Meta-test</div>
+        </Link>
         <Link to="/planner">
           <div className="nav-item">Planner</div>
         </Link>
+        <div className="nav-item" onClick={openMypageClick}>
+          mypage
+        </div>
         <div className="nav-item">Sign-Out</div>
       </nav>
     </div>

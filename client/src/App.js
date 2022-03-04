@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Mainpage from './pages/Mainpage';
 import Metetest from './components/metatest/Metatest';
@@ -8,6 +8,14 @@ import './App.css';
 import Plannerpage from './pages/Plannerpage'
 
 function App() {
+  
+  // 마이페이지
+  const [isOpenMypage, setIsOpenMypage] = useState(false);
+
+  const openMypageHandler = () => {
+    setIsOpenMypage(true);
+  };
+
   return (
     <div className="App">
       <Switch>
@@ -19,7 +27,10 @@ function App() {
           </div>
         </Route>
         <Route exact path="/planner">
-          <Plannerpage />
+          <Plannerpage
+            isOpenMypage={isOpenMypage}
+            openMypageHandle={openMypageHandler}
+          />
           <Footer></Footer>
         </Route>
       </Switch>
