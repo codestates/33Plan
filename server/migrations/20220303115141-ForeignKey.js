@@ -2,10 +2,10 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.addColumn("users", "today_id", {
+    await queryInterface.addColumn("todays", "user_id", {
       type: Sequelize.INTEGER,
       references: {
-        model: "todays",
+        model: "users",
         key: "id"
       }
     })
@@ -13,21 +13,21 @@ module.exports = {
       type: Sequelize.INTEGER,
       references: {
         model: "todays",
-        key: "id"
+        key: "user_id"
       }
     })
     await queryInterface.addColumn("tryings", "today_id", {
       type: Sequelize.INTEGER,
       references: {
         model: "todays",
-        key: "id"
+        key: "user_id"
       }
     })
     await queryInterface.addColumn("bads", "today_id", {
       type: Sequelize.INTEGER,
       references: {
         model: "todays",
-        key: "id"
+        key: "user_id"
       }
     })
     await queryInterface.addColumn("countPerWeeks", "good_id", {
@@ -60,13 +60,13 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.removeColumn("users", "today_id")
+    await queryInterface.removeColumn("today", "user_id")
     await queryInterface.removeColumn("goods", "today_id")
     await queryInterface.removeColumn("tryings", "today_id")
     await queryInterface.removeColumn("bads", "today_id")
     await queryInterface.removeColumn("countPerWeeks", "good_id")
-    await queryInterface.removeColumn("countPerWeeks", "good_id")
-    await queryInterface.removeColumn("countPerWeeks", "good_id")
+    await queryInterface.removeColumn("countPerWeeks", "trying_id")
+    await queryInterface.removeColumn("countPerWeeks", "bad_id")
 
     /**
      * Add reverting commands here.
