@@ -3,6 +3,7 @@ import NavSignIn from '../components/NavSignIn'
 import NavSignOut from '../components/NavSignOut'
 import Signin from '../components/sign/Signin';
 import Signup from '../components/sign/Signup'
+import MetaTestModal from '../components/metatest/MetatestModal';
 
 
 
@@ -14,7 +15,17 @@ function Mainpage () {
 
   // 로그인 후에 Nav-Bar에 로그아웃 버튼으로 변경 
   const [isValidSignIn, setIsValidSignIn] = useState(false)
+  
+  // 메타테스트 클릭에 따른 변화
+  const [isMetaTest, setMetaTest] = useState(false);
 
+  const MetaTestHandler = function (){
+    setMetaTest(true)
+  }
+
+  const MetaTestHandlerClose = function (){
+    setMetaTest(false)
+  }
 
   const handleClose = function (){
     setIsSignin(false)
@@ -37,11 +48,12 @@ function Mainpage () {
     setIsValidSignIn(true)
   }
 
+
   return (
     <>
     { isValidSignIn
       ? <NavSignOut />
-      : <NavSignIn SignInHandler={SignInHandler} SignUpHandler={SignUpHandler} />
+      : <NavSignIn SignInHandler={SignInHandler} SignUpHandler={SignUpHandler} MetaTestHandler={MetaTestHandler} />
     }
       <div className="mainpage">
         <h2>니 자신을 알라</h2>
@@ -63,6 +75,9 @@ function Mainpage () {
       <div className="signpage-container">
         {isSignin ? <Signin authSignIn={authSignIn} handleClose={handleClose}/>: null}
         {isSignup ? <Signup handleClose={handleClose}/>: null}
+      </div>
+      <div className="signpage-container">
+        {isMetaTest ? <MetaTestModal MetaTestHandlerClose={MetaTestHandlerClose}/>: null}
       </div>
     </>  
   );
