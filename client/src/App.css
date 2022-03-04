@@ -1,22 +1,32 @@
+@font-face {
+font-family: 'UhBeeKeongKeong';
+src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeKeongKeong.woff') format('woff');
+font-weight: normal;
+font-style: normal;
+}
+
 .App {
+  font-family: 'UhBeeKeongKeong';
   text-align: center;
   width: 100%;
-  height: 100vh;
   /* border: 1px solid #000; */
 }
 
 /*** Plannerpage ***/
+.planner {
+  /* border: 5px solid #000; */
+  margin-top: 100px;
+}
 .plan-container {
+  /* border: 2px solid blue; */
   width: 100%;
-  height: 100vh;
   display: flex;
-  /* justify-content: center; */
-  margin-top: 150px;
   align-items: center;
   flex-direction: column;
-  position: absolute;
+  margin-bottom: 50px;
 }
 .plan-header {
+  font-family: 'UhBeeKeongKeong';
   display: flex;
   /* border: 1px solid red; */
   width: 600px;
@@ -35,6 +45,7 @@
   align-items: center;
   justify-content:space-between;
   border-bottom: 1px solid lightgray;
+  margin-bottom: 10px;
 }
 
 .plan-list li {
@@ -62,31 +73,29 @@
 
 /*** plan-analyse-list ***/
 .plan-analyse-container {
-  /* border: 1px solid #000; */
+  /* border: 2px solid red; */
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100vh;
 }
 
 .plan-analyse-box{
+  /* border: 1px solid #000; */
   list-style: none;
   padding-left: 0;
-  margin-top: 300px;
   width: 600px;
-  /* border: 1px solid #000; */
 }
 .plan-analyse{
-  padding: 10px 0;
+  /* border: 1px solid #000; */
+  padding: 12px 0;
   font-size: 16px;
   text-align: left;
-  /* border: 1px solid #000; */
   display: flex;
 }
 
 .plan-analyse-title {
   /* border: 1px solid #000; */
+  font-family: 'UhBeeKeongKeong';
   width: 120px;
   font-weight: 800;
 }
@@ -96,16 +105,22 @@
   text-align: left;
   width: 500px;
 }
+.plan-analyse-text li {
+  padding-bottom: 5px;
+}
 
 /*** PlanFormModal ***/
 .modal-container {
-  /* border: 1px solid #000; */
-  /* background: #000; */
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: fixed; 
+  z-index: 999; 
+  left: 0; 
+  top: 0; 
+  width: 100vw; 
+  height: 100vh; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  background: rgba(0, 0, 0, 0.5); 
 }
 
 .modal-from {
@@ -124,7 +139,7 @@
   position: relative;
 }
 
-input {
+.modal-input {
   width: 400px;
   height: 30px;
   border: none;
@@ -141,6 +156,10 @@ input {
   margin-top: 15px;
 }
 
+.btn {
+  font-size: 14px;
+  font-weight: 700;
+}
 
 
 
@@ -185,7 +204,7 @@ input {
 
 /* 전체적인 폰트스타일 변경 가능 */
 .App{
-  font-family:'Times New Roman';
+  /* font-family:'Times New Roman'; */
   width:100%;
   height:500px;
 }
