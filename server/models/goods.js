@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.countPerWeek);
     }
   }
-  goods.init(
+  goods.init({
+  },
     {
       sequelize,
       modelName: 'goods',

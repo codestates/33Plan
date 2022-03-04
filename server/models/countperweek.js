@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.bads);
     }
   }
-  countPerWeek.init(
+  countPerWeek.init({
+  },
     {
       sequelize,
       modelName: 'countPerWeek',
