@@ -5,6 +5,7 @@ import Signin from '../components/sign/Signin';
 import Signup from '../components/sign/Signup'
 
 
+
 function Mainpage () {
   /* TODO : Mainpage 만들기. */
   // 로그인 여부에 따른 변화 
@@ -43,7 +44,7 @@ function Mainpage () {
       : <NavSignIn SignInHandler={SignInHandler} SignUpHandler={SignUpHandler} />
     }
       <div className="mainpage">
-        <h1 className="mainpage-title">니 자신을 알라</h1>
+        <h2>니 자신을 알라</h2>
         <div className="mainpage-container">
           <div className="mainpage-content">
           원질이 노래하며 품으며, 
