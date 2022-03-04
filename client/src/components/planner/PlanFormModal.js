@@ -9,6 +9,7 @@ function PlanWriteModal({ handleInputValue }) {
         <div>
           {/* <span>첫번째 할 일</span> */}
           <input
+            className="modal-input"
             type="text"
             placeholder="첫번째 할 일"
             onChange={handleInputValue("first")}
@@ -17,6 +18,7 @@ function PlanWriteModal({ handleInputValue }) {
         <div>
           {/* <span>두번째 할 일</span> */}
           <input
+            className="modal-input"
             type="text"
             placeholder="두번째 할 일"
             onChange={handleInputValue("second")}
@@ -25,12 +27,13 @@ function PlanWriteModal({ handleInputValue }) {
         <div>
           {/* <span>세번째 할 일</span> */}
           <input
+            className="modal-input"
             type="text"
             placeholder="세번째 할 일"
             onChange={handleInputValue("third")}
           />
         </div>
-        <button className="plan-write">작성완료</button>
+        <button className="plan-write btn">작성완료</button>
       </form>
     </div>
   );

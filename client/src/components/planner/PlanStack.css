@@ -3,14 +3,14 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 100%;
-  height: 100vh;
+  margin: 80px 0;
 }
 
 .planstats-title{
-  font-size: 50px;
-  margin-bottom: 50px;
+  font-family: 'UhBeeKeongKeong';
+  font-size: 40px;
   font-weight: 500;
+  margin-bottom: 50px;
 }
 
 .plan-stack {
@@ -55,9 +55,7 @@
   /* border: 1px solid #000; */
   display: flex;
   justify-content: center;
-  width: 100%;
-  height: 80px;
-  margin: 60px 0;
+  margin: 70px 0;
 }
 .graph-bar {
   /* border: 1px solid #000; */

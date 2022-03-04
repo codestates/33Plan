@@ -20,8 +20,9 @@ function App() {
         </Route>
         <Route exact path="/planner">
           <Plannerpage />
+          <Footer></Footer>
         </Route>
-      </Switch>    
+      </Switch>
     </div>
   );
 }
