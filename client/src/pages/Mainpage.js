@@ -4,6 +4,7 @@ import NavSignOut from "../components/NavSignOut";
 import Signin from "../components/sign/Signin";
 import Signup from "../components/sign/Signup";
 import Mypage from "../components/sign/Mypage";
+import MetaTestModal from '../components/metatest/MetatestModal';
 
 function Mainpage() {
   /* TODO : Mainpage 만들기. */
@@ -11,15 +12,24 @@ function Mainpage() {
   const [isSignin, setIsSignin] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
 
+
   // 마이페이지
   const [isOpenMypage, setIsOpenMypage] = useState(false);
-
   const openMypageHandler = () => {
     setIsOpenMypage(true);
   };
+  // 로그인 후에 Nav-Bar에 로그아웃 버튼으로 변경 
+  const [isValidSignIn, setIsValidSignIn] = useState(false)
+  // 메타테스트 클릭에 따른 변화
+  const [isMetaTest, setMetaTest] = useState(false);
 
-  // 로그인 후에 Nav-Bar에 로그아웃 버튼으로 변경
-  const [isValidSignIn, setIsValidSignIn] = useState(true);
+  const MetaTestHandler = function (){
+    setMetaTest(true)
+  }
+
+  const MetaTestHandlerClose = function (){
+    setMetaTest(false)
+  }
 
   const handleClose = function () {
     setIsSignin(false);
@@ -42,16 +52,15 @@ function Mainpage() {
     setIsValidSignIn(true);
   };
 
+
   return (
     <>
       {isValidSignIn ? (
         <NavSignOut openMypageHandler={openMypageHandler} />
-      ) : (
-        <NavSignIn
-          SignInHandler={SignInHandler}
-          SignUpHandler={SignUpHandler}
-        />
-      )}
+      ) 
+      : ( <NavSignIn SignInHandler={SignInHandler} SignUpHandler={SignUpHandler} MetaTestHandler={MetaTestHandler} /> )
+    }
+
       <div className="mainpage">
         <h2>니 자신을 알라</h2>
         <div className="mainpage-container">
@@ -77,7 +86,10 @@ function Mainpage() {
         {isSignup ? <Signup handleClose={handleClose} /> : null}
         {isOpenMypage ? <Mypage handleClose={handleClose} /> : null}
       </div>
-    </>
+      <div className="signpage-container">
+        {isMetaTest ? <MetaTestModal MetaTestHandlerClose={MetaTestHandlerClose}/>: null}
+      </div>
+    </>  
   );
 }
 
