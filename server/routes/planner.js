@@ -3,13 +3,16 @@ const plannerRouter = express.Router();
 
 const { plannerController } = require("../controller");
 
-//  POST /users/signup
-plannerRouter.post("/register", plannerController.register.post);
+plannerRouter.post("/register/:id", plannerController.register.post);
 
-//  POST /users/login
-plannerRouter.post("/revision", plannerController.revision.post);
+plannerRouter.post("/revision/:id", plannerController.revision.post);
 
-//  get /users/auth
-plannerRouter.get("/summary", plannerController.summary.get);
+plannerRouter.get("/summary/:id", plannerController.summary.get);
+
+// today -> good / trying / bad 분류
+plannerRouter.post("/classification/good", plannerController.classification.good)
+plannerRouter.post("/classification/trying", plannerController.classification.trying)
+plannerRouter.post("/classification/bad", plannerController.classification.bad)
+
 
 module.exports = plannerRouter;

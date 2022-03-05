@@ -34,4 +34,21 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+const { users, plans, categories } = sequelize.models;
+
+users.hasMany(plans, {
+  foreignKey: "user_id"
+});
+plans.belongsTo(users, {
+  foreignKey: "user_id"
+});
+
+categories.hasMany(plans, {
+  foreignKey: "plan_id" 
+});
+plans.belongsTo(categories, {
+  foreignKey: "plan_id"
+})
+
+
 module.exports = db;
