@@ -4,7 +4,7 @@ import NavSignOut from "../components/NavSignOut";
 import Signin from "../components/sign/Signin";
 import Signup from "../components/sign/Signup";
 import Mypage from "../components/sign/Mypage";
-import MetaTestModal from '../components/metatest/MetatestModal';
+import MetaTestQuiz from '../components/metatest/MetaTestQuiz';
 
 function Mainpage() {
   /* TODO : Mainpage 만들기. */
@@ -28,7 +28,7 @@ function Mainpage() {
   }
 
   const MetaTestHandlerClose = function (){
-    setMetaTest(false)
+    setMetaTest(!isMetaTest)
   }
 
   const handleClose = function () {
@@ -87,7 +87,7 @@ function Mainpage() {
         {isOpenMypage ? <Mypage handleClose={handleClose} /> : null}
       </div>
       <div className="signpage-container">
-        {isMetaTest ? <MetaTestModal MetaTestHandlerClose={MetaTestHandlerClose}/>: null}
+        {isMetaTest ? <MetaTestQuiz MetaTestHandlerClose={MetaTestHandlerClose}/>: null}
       </div>
     </>  
   );

@@ -74,7 +74,7 @@ function Signin ({authSignIn, handleClose}) {
     if(!loginInfo.email || !loginInfo.password) {
       return setErrorMessage('이메일과 비밀번호를 입력하세요');
     } else {
-       axios.post('https://localhost:4000/signin', 
+       axios.post('https://localhost:4000/users/signin', 
       {
         email: loginInfo.email,
         password: loginInfo.password

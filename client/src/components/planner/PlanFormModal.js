@@ -5,6 +5,7 @@ function PlanWriteModal({ handleInputValue, handleClose, planContent }) {
   // 작성완료 버튼을 누르면 데이터를
   const { fistContent, secondContent, thirdContent } = planContent;
 
+
   return (
     <div className="modal-container">
       <form className="modal-form" onSubmit={(e) => e.preventDefault()}>
