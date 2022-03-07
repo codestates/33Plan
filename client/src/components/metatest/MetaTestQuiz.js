@@ -90,7 +90,7 @@ function MetaTestQuiz ({MetaTestHandlerClose}) {
            </Link>
         </div>        
       </div>
-      : <MetaTestAnswer metaData={metaData}/>
+      : <MetaTestAnswer metaData={metaData} handleModalClose={handleModalClose} />
       }
     </>
   );
