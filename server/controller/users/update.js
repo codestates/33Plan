@@ -10,25 +10,42 @@ module.exports = {
     // 토큰 확인
     // console.log(req.headers.authorization)
     if (!req.headers.authorization) {
+      res.status(401).json({
+        data: null,
+        message: "Invalid token",
+      });
     } else {
       try {
         const { nickname, password, phone } = req.body;
         const accessToken = req.headers.authorization.split(" ")[1];
         const decoded = verify(accessToken, process.env.ACCESS_SECRET);
-
         if (password) {
           if (!validatePW(password)) {
-            return res.status(400).send({
-              message: "비밀번호가 형식에 맞지 않습니다",
+            return res.status(400).json({
+              data: null,
+              message: "Invalid password. please check it again",
             });
           }
         }
         if (phone) {
           if (!validatePhone(phone)) {
-            return res.status(400).send({
-              message: "전화번호가 형식에 맞지 않습니다",
+            return res.status(400).json({
+              data: null,
+              message: "Invalid phone number. please check it again",
             });
           }
+        }
+        const checkNickname = await users.findOne({
+          where: {
+            nickname,
+          },
+        });
+
+        if (checkNickname) {
+          return res.status(409).json({
+            data: null,
+            message: "email already exists",
+          });
         }
 
         await users.update(

@@ -43,10 +43,10 @@ plans.belongsTo(users, {
   foreignKey: "user_id"
 });
 
-categories.hasMany(plans, {
+categories.belongsTo(plans, {
   foreignKey: "plan_id" 
 });
-plans.belongsTo(categories, {
+plans.hasMany(categories, {
   foreignKey: "plan_id"
 })
 
