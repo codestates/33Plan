@@ -26,7 +26,7 @@ function Mainpage() {
     setIsOpenMypage(true);
   };
   // 로그인 후에 Nav-Bar에 로그아웃 버튼으로 변경 
-  const [isValidSignIn, setIsValidSignIn] = useState(false)
+  const [isValidSignIn, setIsValidSignIn] = useState(true)
   // 메타테스트 클릭에 따른 변화
   const [isMetaTest, setMetaTest] = useState(false);
 

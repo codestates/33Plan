@@ -63,6 +63,8 @@ font-style: normal;
   border-radius: 10px;
   margin-left: 5px;
   padding: 3px 10px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .plan-modal {
@@ -98,7 +100,7 @@ font-style: normal;
 .plan-analyse-title {
   /* border: 1px solid #000; */
   font-family: 'UhBeeKeongKeong';
-  width: 120px;
+  width: 140px;
   font-weight: 800;
 }
 

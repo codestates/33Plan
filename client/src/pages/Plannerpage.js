@@ -18,16 +18,39 @@ function Plannerpage({ isOpenMypage, openMypageHandler }) {
 
   const handleInputValue = (key) => (e) => {
     setPlanContent({ ...planContent, [key]: e.target.value });
-    console.log(planContent);
+    // console.log(planContent);
   };
-  console.log(planContent);
+  // console.log(planContent);
 
   const handleClose = function () {
-    setIsOpenPlan(false)
+    setIsOpenPlan(false);
   };
 
   const { first, second, third } = planContent;
-  console.log(first);
+
+  // todo: 버튼 선택해서 오늘 잘한 일, 노력한 일, 못한 일, 구분해서 출력되게 하기
+  // 1. 버튼을 클릭하면 해당 글이 버튼에 연결된 state에 담기게 하기 => onChange
+  const [todayPlan, setTodayPlan] = useState({
+    success: [],
+    effort: [],
+    fail: [],
+  });
+  // console.log(todayPlan);
+  // onClick 했을 때 setTodayPlan의 객체에 알맞게 담기도록 함수 작성
+  //! 오늘 어려운 부분 : 오늘 잘한 일에 선택된 모든 플랜이 출력되게 하기
+  //! 오늘 어려운 부분 : 출력되는 모든 플랜을 각각 <li> 태그 안에 넣어서 출력되게 하기
+  // map 사용해보기
+  /*
+  [], '할일을 적는다', ['할일을 적는다'], '한다!!!!
+  */
+  const todayPlanValue = (e) => {
+    const { value, name } = e.target;
+    setTodayPlan({ ...todayPlan, [name]: [todayPlan[name].concat(value)] });
+    console.log(todayPlan);
+  };
+
+  const { success, effort, fail } = todayPlan;
+
   return (
     <div>
       <NavSignOut openMypageHandler={openMypageHandler} />
@@ -44,25 +67,97 @@ function Plannerpage({ isOpenMypage, openMypageHandler }) {
             <div className="plan-box">
               <li>{first}</li>
               <div className="plan-btn-box">
-                <button className="plan-btn">good</button>
-                <button className="plan-btn">trying</button>
-                <button className="plan-btn">bad</button>
+                <button
+                  className="plan-btn"
+                  title="오늘 잘한 일"
+                  name="success"
+                  value={first}
+                  onClick={todayPlanValue}
+                >
+                  😎
+                </button>
+                <button
+                  className="plan-btn"
+                  title="오늘 노력한 일"
+                  name="effort"
+                  value={first}
+                  onClick={todayPlanValue}
+                >
+                  🥲
+                </button>
+                <button
+                  className="plan-btn"
+                  title="오늘 못한 일"
+                  name="fail"
+                  value={first}
+                  onClick={todayPlanValue}
+                >
+                  😩
+                </button>
               </div>
             </div>
             <div className="plan-box">
               <li>{second}</li>
               <div className="plan-btn-box">
-                <button className="plan-btn">good</button>
-                <button className="plan-btn">trying</button>
-                <button className="plan-btn">bad</button>
+                <button
+                  className="plan-btn"
+                  title="오늘 잘한 일"
+                  name="success"
+                  value={second}
+                  onClick={todayPlanValue}
+                >
+                  😎
+                </button>
+                <button
+                  className="plan-btn"
+                  title="오늘 노력한 일"
+                  name="effort"
+                  value={second}
+                  onClick={todayPlanValue}
+                >
+                  🥲
+                </button>
+                <button
+                  className="plan-btn"
+                  title="오늘 못한 일"
+                  name="fail"
+                  value={second}
+                  onClick={todayPlanValue}
+                >
+                  😩
+                </button>
               </div>
             </div>
             <div className="plan-box">
               <li>{third}</li>
               <div className="plan-btn-box">
-                <button className="plan-btn">good</button>
-                <button className="plan-btn">trying</button>
-                <button className="plan-btn">bad</button>
+                <button
+                  className="plan-btn"
+                  title="오늘 잘한 일"
+                  name="success"
+                  value={third}
+                  onClick={todayPlanValue}
+                >
+                  😎
+                </button>
+                <button
+                  className="plan-btn"
+                  title="오늘 노력한 일"
+                  name="effort"
+                  value={third}
+                  onClick={todayPlanValue}
+                >
+                  🥲
+                </button>
+                <button
+                  className="plan-btn"
+                  title="오늘 못한 일"
+                  name="fail"
+                  value={third}
+                  onClick={todayPlanValue}
+                >
+                  😩
+                </button>
               </div>
             </div>
           </ul>
@@ -82,20 +177,19 @@ function Plannerpage({ isOpenMypage, openMypageHandler }) {
               <li className="plan-analyse">
                 <span className="plan-analyse-title">오늘 잘한 일</span>
                 <ul className="plan-analyse-text">
-                  <li>버튼 만들기</li>
-                  <li>잘한 일/ 노력한 일/ 못한 일 레이아웃아웃아웃아웃</li>
+                  <li>{success}</li>
                 </ul>
               </li>
               <li className="plan-analyse">
                 <span className="plan-analyse-title">오늘 노력한 일</span>
                 <ul className="plan-analyse-text">
-                  <li>어쩌고 저쩌고 어쩔삼성 비스포크</li>
+                  <li>{effort}</li>
                 </ul>
               </li>
               <li className="plan-analyse">
                 <span className="plan-analyse-title">오늘 못한 일</span>
                 <ul className="plan-analyse-text">
-                  <li>어쩌고 저쩌고 어쩔삼성 비스포크포크포크</li>
+                  <li>{fail}</li>
                 </ul>
               </li>
             </ul>
