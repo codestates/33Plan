@@ -78,15 +78,15 @@
   }
 
   .modal-metatest-container-card{
-    font-family: 'Times New Roman';
-    font-size: 7em;
-    background-color: white;
-    padding: 40px;
+    padding:0.2em;
+    background-color: tomato;
     margin-top: 2vh;
-    margin-bottom: 16vh;
-    line-height: 100px;
-    padding: 20px 5px;
-    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.205) ;
+    margin-bottom: 10vh;
+    width: 30vw;
+    height: 20vh;
+    text-align: center;
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.205);
+    border-radius: 5px;
   }
 
   .modal-metatest-container-second{
@@ -96,4 +96,29 @@
 
   .modal-metatest-container-btn{
     font-size: 2em;
+  }
+
+  .card-font{
+    text-align: center;
+    margin-top: 8vh;
+    font-family: 'Times New Roman';
+    font-size: 5em;
+  }
+
+  .modal-metatest-answer{
+    margin-bottom:30px;
+
+  }
+
+  .modal-metatest-answer input{
+    padding : 10px;
+    font-size : 16px;
+    border-radius : 5px;
+    width : 80%;
+    border : 1px solid grey;
+  }
+  .modal-metatest-answer button{
+    display : block;
+    margin : auto;
+    margin-top : 10px;
   }

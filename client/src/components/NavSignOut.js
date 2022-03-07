@@ -1,11 +1,29 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import axios from 'axios';
+
 
 function NavSignIn({ openMypageHandler }) {
   /* TODO : Nav 만들기. */
   const openMypageClick = () => {
     openMypageHandler();
   };
+ 
+  const history = useHistory();
+
+  const handleLogout = () => {
+    axios.post('https://localhost:4000/users/logout')
+    .then((res) => {
+      //
+      // setUserinfo(null);
+      // setIsLogin(false);
+      history.push('/');
+    });
+  };
+
+
+  
+
   return (
     <div>
       <nav className="nav-container">
@@ -23,7 +41,7 @@ function NavSignIn({ openMypageHandler }) {
         <div className="nav-item" onClick={openMypageClick}>
           mypage
         </div>
-        <div className="nav-item">Sign-Out</div>
+        <div className="nav-item" onClick={handleLogout}>Sign-Out</div>
       </nav>
     </div>
   );
