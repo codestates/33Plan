@@ -22,7 +22,7 @@ function Signup ({handleClose}) {
     if(!email || !password || !nickname || !mobile) {
       return setErrorMessage("모든 항목은 필수입니다")
     }
-    // console.log(userinfo)
+    console.log("회원정보 요청 ",userinfo)
     await axios.post('https://localhost:4000/users/signup',
        userinfo ,{
       headers: { 'Content-Type': 'application/json'}
