@@ -5,6 +5,6 @@ module.exports = {
       .cookie("accessToken", "", {
         maxAge: 0,
       })
-      .send("Successfully Logged Out");
+      .send({ message: "Successfully Logged Out" });
   },
 };
