@@ -2,20 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function NavSignIn ({SignUpHandler, SignInHandler, MetaTestHandler}) {
-  /* TODO : Nav 만들기. */
+  /* TODO : */
   
   const SignInClick = function (){
     SignInHandler()
   }
-
   const SignUpClick = function (){
     SignUpHandler()
   }
- 
   const MetaTestClick = function (){
     MetaTestHandler()
   }
-
 
   return (
     <div>

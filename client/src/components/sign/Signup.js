@@ -22,16 +22,15 @@ function Signup ({handleClose}) {
     if(!email || !password || !nickname || !mobile) {
       return setErrorMessage("모든 항목은 필수입니다")
     }
-    // console.log(userinfo)
-    await axios.post('https://localhost:4000/signup',
+    console.log("회원정보 요청 ",userinfo)
+    await axios.post('https://localhost:4000/users/signup',
        userinfo ,{
       headers: { 'Content-Type': 'application/json'}
     })
     .then((res)=>{
        if(res.data.message === 'ok'){
-         return handleModalClose();
+          handleModalClose();
        }
-      
       // 회원가입 완료 되면 첫 페이지로 돌아가게한다.
     }).catch((err)=>{
       console.log(err)
