@@ -3,7 +3,7 @@ import React from "react";
 
 function PlanWriteModal({ handleInputValue, handleClose, planContent }) {
   // 작성완료 버튼을 누르면 데이터를
-  const { fistContent, secondContent, thirdContent } = planContent;
+  const { first, second, third } = planContent;
 
   return (
     <div className="modal-container">
@@ -12,7 +12,8 @@ function PlanWriteModal({ handleInputValue, handleClose, planContent }) {
           <input
             className="modal-input"
             type="text"
-            placeholder="첫번째 할 일"
+            placeholder={first ? null : "매일 물 1리터 마시기"}
+            value={first}
             onChange={handleInputValue("first")}
           />
         </div>
@@ -20,7 +21,8 @@ function PlanWriteModal({ handleInputValue, handleClose, planContent }) {
           <input
             className="modal-input"
             type="text"
-            placeholder="두번째 할 일"
+            placeholder={second ? null : "책 1권 읽기"}
+            value={second}
             onChange={handleInputValue("second")}
           />
         </div>
@@ -28,11 +30,12 @@ function PlanWriteModal({ handleInputValue, handleClose, planContent }) {
           <input
             className="modal-input"
             type="text"
-            placeholder="세번째 할 일"
+            placeholder={third ? null : "매일 운동장 돌기"}
+            value={third}
             onChange={handleInputValue("third")}
           />
         </div>
-        <button className="plan-write btn" type="submit" onClick={handleClose}>
+        <button className="plan-write btn" type="button" onClick={handleClose}>
           작성완료
         </button>
       </form>
