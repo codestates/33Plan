@@ -4,4 +4,3 @@ localhost*
 
 *package-lock.json
 *.pem
-/config/config.js
