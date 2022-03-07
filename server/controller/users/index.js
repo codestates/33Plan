@@ -3,5 +3,6 @@ module.exports = {
     login: require("./login"),
     logout: require("./logout"),
     auth: require("./auth"),
+    update: require("./update")
   };
   

@@ -18,25 +18,19 @@ function Signup ({handleClose}) {
   };
   const handleSignup = async () => {
     // TODO : 서버에 회원가입을 요청 후 로그인 페이지로 이동하세요.
-    //        회원가입 성공 후 로그인 페이지 이동은 다음 코드를 이용하세요.
-    //
-    //        history.push("/");
-    //
-    // TODO : 모든 항목을 입력하지 않았을 경우 에러를 표시해야 합니다.
     const {email, password, nickname, mobile} = userinfo
     if(!email || !password || !nickname || !mobile) {
       return setErrorMessage("모든 항목은 필수입니다")
     }
-    // console.log(userinfo)
-    await axios.post('https://localhost:4000/signup',
+    console.log("회원정보 요청 ",userinfo)
+    await axios.post('https://localhost:4000/users/signup',
        userinfo ,{
       headers: { 'Content-Type': 'application/json'}
     })
     .then((res)=>{
        if(res.data.message === 'ok'){
-         return handleModalClose();
+          handleModalClose();
        }
-      
       // 회원가입 완료 되면 첫 페이지로 돌아가게한다.
     }).catch((err)=>{
       console.log(err)

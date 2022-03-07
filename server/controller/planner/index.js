@@ -1,6 +1,7 @@
 module.exports = {
     register: require("./register"),
     revision: require("./revision"),
-    summary: require("./summary")
+    summary: require("./summary"),
+    classification: require("./classification")
   };
   

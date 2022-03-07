@@ -11,7 +11,9 @@ module.exports = {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      res.status(400).send("email 또는 password 입력이 올바르지 않습니다");
+      res.status(400).send({
+        message: "Invalid email or password",
+      });
     } else {
       try {
         const userData = await users.findOne({
@@ -22,7 +24,9 @@ module.exports = {
         });
 
         if (!userData) {
-          res.status(404).send("일치하는 유저정보를 찾을 수 없습니다");
+          res.status(404).send({
+            message: "No matching user information",
+          });
         } else {
           const { id, nickname, email, createdAt, updatedAt } =
             userData.dataValues;
@@ -37,9 +41,6 @@ module.exports = {
           const accessToken = sign(userInfo, process.env.ACCESS_SECRET, {
             expiresIn: 60 * 60,
           });
-          const refreshToken = sign(userInfo, process.env.REFRESH_SECRET, {
-            expiresIn: 60 * 60 * 24,
-          });
 
           res
             .status(200)
@@ -48,12 +49,7 @@ module.exports = {
               secure: true,
               sameSite: "none",
             })
-            .cookie("refreshToken", refreshToken, {
-              httpOnly: true,
-              secure: true,
-              sameSite: "none",
-            })
-            .send("Successfully Logged In");
+            .send({ message: "Successfully Logged In" });
         }
       } catch (error) {
         console.error(error);

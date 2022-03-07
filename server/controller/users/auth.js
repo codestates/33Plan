@@ -24,7 +24,7 @@ module.exports = {
         if (!userData) {
           res.status(404).json({
             data: null,
-            message: "일치하는 유저정보를 찾을 수 없습니다",
+            message: "No matching user information",
           });
         } else {
           const { id, nickname, email, createdAt, updatedAt } = userData;

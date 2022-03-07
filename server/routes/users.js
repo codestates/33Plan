@@ -3,16 +3,10 @@ const usersRouter = express.Router();
 
 const { usersController } = require("../controller");
 
-//  POST /users/signup
 usersRouter.post("/signup", usersController.signup.post);
-
-//  POST /users/login
 usersRouter.post("/login", usersController.login.post);
-
-//  POST /users/logout
 usersRouter.post("/logout", usersController.logout.post);
-
-//  get /users/auth
 usersRouter.get("/auth", usersController.auth.get);
+usersRouter.patch("/update", usersController.update.patch);
 
 module.exports = usersRouter;

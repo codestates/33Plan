@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Singin.css';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -57,7 +58,7 @@ export const ModalView = styled.div.attrs(props => ({
   
 
 
-function Signin ({authSignIn, handleClose}) {
+function Signin ({isAuthenticated, handleClose}) {
   /* TODO : Mainpage 만들기. */
   const [loginInfo, setLoginInfo] = useState({
     email: '',
@@ -73,7 +74,7 @@ function Signin ({authSignIn, handleClose}) {
     if(!loginInfo.email || !loginInfo.password) {
       return setErrorMessage('이메일과 비밀번호를 입력하세요');
     } else {
-       axios.post('https://localhost:4000/signin', 
+       axios.post('https://localhost:4000/users/login', 
       {
         email: loginInfo.email,
         password: loginInfo.password
@@ -81,7 +82,7 @@ function Signin ({authSignIn, handleClose}) {
         headers: { 'Content-Type': 'application/json'}
       })
       .then((res) => {
-        return authSignIn()
+        return isAuthenticated()
       })
     }
   };
