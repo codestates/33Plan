@@ -22,11 +22,11 @@ module.exports = {
     const { nickname, email, password, phone } = req.body;
 
     if (!validateEmail(email)) {
-      res.status(400).send({ message: "이메일 형식에 맞지 않습니다" });
+      res.status(400).send({ message: "Invalid email. please check it again" });
     } else if (!validatePW(password)) {
-      res.status(400).send({ message: "비밀번호 형식에 맞지 않습니다" });
+      res.status(400).send({ message: "Invalid password. please check it again" });
     } else if (!validatePhone(phone)) {
-      res.status(400).send({ message: "입력된 값이 형식에 맞지 않습니다" });
+      res.status(400).send({ message: "Invalid phone number. please check it again" });
     } else {
       // 유효성 검사 통과한 경우
       // 1. 데이터베이스에 중복되는 내용 있는지 확인 후 없으면 데이터 삽입
