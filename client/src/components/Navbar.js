@@ -42,7 +42,6 @@ function Navbar ({isLogin, handleLogout}) {
                   <div className="nav-item">Sign-In</div>
                 </Link>
               </>
-              
           }
       </nav>
     </div>
