@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { useHistory } from 'react-router-dom';
+import { useHistory,Link } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -12,7 +12,9 @@ function Signup ({handleClose}) {
     mobile: ''
   });
   const [errorMessage, setErrorMessage] = useState('');
-  // const history = useHistory();
+
+  const history = useHistory();
+
   const handleInputValue = (key) => (e) => {
     setuserinfo({ ...userinfo, [key]: e.target.value });
   };
@@ -29,7 +31,7 @@ function Signup ({handleClose}) {
     })
     .then((res)=>{
        if(res.data.message === 'ok'){
-          handleModalClose();
+          return history.push('/')
        }
       // 회원가입 완료 되면 첫 페이지로 돌아가게한다.
     }).catch((err)=>{
@@ -37,9 +39,6 @@ function Signup ({handleClose}) {
     })
   };
 
-  const handleModalClose = () => {
-    handleClose()
-  };
 
   return (
     <div className="sign-page">
@@ -76,13 +75,9 @@ function Signup ({handleClose}) {
         </button>
         <br />
         <br />
-        <button
-          className='btn btn-signup'
-          type='submit'
-          onClick={handleModalClose}
-        >
-          닫기
-        </button>
+        <Link to="/">
+          <button className="sign-form">닫기</button>
+        </Link>
         <div className="sign-form">{errorMessage}</div>
       </form>
     </center>
