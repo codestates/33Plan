@@ -28,7 +28,7 @@ function Mypage({ handleClose }) {
         </dl>
         <button
           className="mypage-close-btn"
-          type="submit"
+          type="button"
           onClick={handleClose}
         >
           닫기

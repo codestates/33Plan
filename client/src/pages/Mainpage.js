@@ -33,11 +33,12 @@ function Mainpage() {
 
   // 회원정보 전달 
   const [userInfo, setUserinfo] = useState({
-    email: '',
-    nickName: '',
-    mobile: '',
-    // 플래너 내용:'',
+    email: "",
+    password: "",
+    nickname: "",
+    phone: "",
   });
+  console.log(userInfo);
 
   const MetaTestHandler = function (){
     setMetaTest(true)
@@ -104,9 +105,13 @@ function Mainpage() {
     <>
       {isValidSignIn ? (
         <NavSignOut openMypageHandler={openMypageHandler} />
-      ) 
-      : ( <NavSignIn SignInHandler={SignInHandler} SignUpHandler={SignUpHandler} MetaTestHandler={MetaTestHandler} /> )
-    }
+      ) : (
+        <NavSignIn
+          SignInHandler={SignInHandler}
+          SignUpHandler={SignUpHandler}
+          MetaTestHandler={MetaTestHandler}
+        />
+      )}
 
       <div className="mainpage">
         <h2>니 자신을 알라</h2>
@@ -131,12 +136,16 @@ function Mainpage() {
           <Signin isAuthenticated={isAuthenticated} handleClose={handleClose} />
         ) : null}
         {isSignup ? <Signup handleClose={handleClose} /> : null}
-        {isOpenMypage ? <Mypage handleClose={handleClose} /> : null}
+        {isOpenMypage ? (
+          <Mypage userInfo={userInfo} handleClose={handleClose} />
+        ) : null}
       </div>
       <div className="signpage-container">
-        {isMetaTest ? <MetaTestQuiz MetaTestHandlerClose={MetaTestHandlerClose}/>: null}
+        {isMetaTest ? (
+          <MetaTestQuiz MetaTestHandlerClose={MetaTestHandlerClose} />
+        ) : null}
       </div>
-    </>  
+    </>
   );
 }
 

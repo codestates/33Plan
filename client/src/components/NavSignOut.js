@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
 
 
-function NavSignIn({ openMypageHandler }) {
+function NavSignOut({ openMypageHandler }) {
   /* TODO : Nav 만들기. */
   const openMypageClick = () => {
     openMypageHandler();
@@ -47,4 +47,4 @@ function NavSignIn({ openMypageHandler }) {
   );
 }
 
-export default NavSignIn;
+export default NavSignOut;

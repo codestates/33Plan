@@ -3,58 +3,58 @@ import './Singin.css';
 import styled from 'styled-components';
 import axios from 'axios';
 
-export const ModalContainer = styled.div`
-// TODO : Modal을 구현하는데 전체적으로 필요한 CSS를 구현합니다.
-  text-align: center;
-  margin: 120px auto;
-  width: 100%;
-  height: 100%;
-`;
+// export const ModalContainer = styled.div`
+// // TODO : Modal을 구현하는데 전체적으로 필요한 CSS를 구현합니다.
+//   text-align: center;
+//   margin: 120px auto;
+//   width: 100%;
+//   height: 100%;
+// `;
 
-export const ModalBackdrop = styled.div`
- // TODO : Modal이 떴을 때의 배경을 깔아주는 CSS를 구현합니다.
-  position: fixed;
-  z-index: 999; // 이 백드롭이 가장 밑으로 가야한다. 
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.5); //#000 블랙  opacity 불투명도
-`;
+// export const ModalBackdrop = styled.div`
+//  // TODO : Modal이 떴을 때의 배경을 깔아주는 CSS를 구현합니다.
+//   position: fixed;
+//   z-index: 999; // 이 백드롭이 가장 밑으로 가야한다. 
+//   left: 0;
+//   top: 0;
+//   width: 100vw;
+//   height: 100vh;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   background: rgba(0, 0, 0, 0.5); //#000 블랙  opacity 불투명도
+// `;
 
-export const ModalBtn = styled.button`
-  background-color: #4000c7;
-  text-decoration: none;
-  border: none;
-  padding: 20px;
-  color: white;
-  border-radius: 30px;
-  cursor: grab;
-`;
+// export const ModalBtn = styled.button`
+//   background-color: #4000c7;
+//   text-decoration: none;
+//   border: none;
+//   padding: 20px;
+//   color: white;
+//   border-radius: 30px;
+//   cursor: grab;
+// `;
 
-export const ModalView = styled.div.attrs(props => ({
-    // attrs 메소드를 이용해서 아래와 같이 div 엘리먼트에 속성을 추가할 수 있습니다.
-    role: 'dialog'
-  }))`
-    width: 300px;
-    height: 100px;
-    padding: 1.5rem;
-    background: white;
-    border-radius: 2px;
-    margin: 0;
-  // TODO : Modal창 CSS를 구현합니다.
-    > span.close_btn {  // 이 꺽쇠를 사용했을때 
-      margin-top: 5px;
-      cursor: pointer;
-    }
-    > div.desc { 
-      margin-top: 25px;
-      color: #4000c7;
-    }
-  `;
+// export const ModalView = styled.div.attrs(props => ({
+//     // attrs 메소드를 이용해서 아래와 같이 div 엘리먼트에 속성을 추가할 수 있습니다.
+//     role: 'dialog'
+//   }))`
+//     width: 300px;
+//     height: 100px;
+//     padding: 1.5rem;
+//     background: white;
+//     border-radius: 2px;
+//     margin: 0;
+//   // TODO : Modal창 CSS를 구현합니다.
+//     > span.close_btn {  // 이 꺽쇠를 사용했을때 
+//       margin-top: 5px;
+//       cursor: pointer;
+//     }
+//     > div.desc { 
+//       margin-top: 25px;
+//       color: #4000c7;
+//     }
+//   `;
   
 
 

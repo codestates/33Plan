@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Mainpage from './pages/Mainpage';
 import Metetest from './components/metatest/Metatest';
@@ -8,16 +8,11 @@ import './App.css';
 import Plannerpage from './pages/Plannerpage'
 
 function App() {
-  
-  // 마이페이지
-  const [isOpenMypage, setIsOpenMypage] = useState(false);
-
-  const openMypageHandler = () => {
-    setIsOpenMypage(true);
-  };
-
+  // 로그인 된 상태
+  // const [isValidSignIn, setIsValidSignIn] = useState(true)
   return (
     <div className="App">
+      {/* <NavSign IsValidSignIn={IsValidSignIn}/> */}
       <Switch>
         <Route exact path="/">
           <Mainpage />
@@ -27,10 +22,7 @@ function App() {
           </div>
         </Route>
         <Route exact path="/planner">
-          <Plannerpage
-            isOpenMypage={isOpenMypage}
-            openMypageHandle={openMypageHandler}
-          />
+          <Plannerpage />
           <Footer></Footer>
         </Route>
       </Switch>

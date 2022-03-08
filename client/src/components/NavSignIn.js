@@ -1,18 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function NavSignIn ({SignUpHandler, SignInHandler, MetaTestHandler}) {
+function NavSignIn({
+  SignUpHandler,
+  SignInHandler,
+  MetaTestHandler,
+  IsValidSignIn,
+}) {
   /* TODO : */
-  
-  const SignInClick = function (){
-    SignInHandler()
-  }
-  const SignUpClick = function (){
-    SignUpHandler()
-  }
-  const MetaTestClick = function (){
-    MetaTestHandler()
-  }
+
+  const SignInClick = function () {
+    SignInHandler();
+  };
+  const SignUpClick = function () {
+    SignUpHandler();
+  };
+  const MetaTestClick = function () {
+    MetaTestHandler();
+  };
 
   return (
     <div>
@@ -22,10 +27,16 @@ function NavSignIn ({SignUpHandler, SignInHandler, MetaTestHandler}) {
           <div className="nav-item">33plan</div>
         </Link>
         <div className="nav-flex"></div>
-        <div className="nav-item" onClick={MetaTestClick}>Meta-test</div>
+        <div className="nav-item" onClick={MetaTestClick}>
+          Meta-test
+        </div>
         <div className="nav-item">Planner</div>
-        <div className="nav-item" onClick={SignUpClick}>Sign-Up</div>
-        <div className="nav-item" onClick={SignInClick}>Sign-In</div>
+        <div className="nav-item" onClick={SignUpClick}>
+          Sign-Up
+        </div>
+        <div className="nav-item" onClick={SignInClick}>
+          Sign-In
+        </div>
       </nav>
     </div>
   );
