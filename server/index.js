@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: ["https://localhost:3000"],
+    origin: [process.env.S3_URL],
     credentials: true,
     methods: ["GET", "POST", "OPTIONS", "DELETE", "PATCH"],
   })
