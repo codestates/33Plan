@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MetaTestResult from './MetaTestResult.js';
 import './Metatest.css';
 
-function MetaTestAnswer ({metaData, handleModalClose}) {
+function MetaTestAnswer ({metaData, handleOpenMetaTest}) {
   /* TODO : 정답을 확인하는 창*/
   console.log(metaData)
   const [resultPage , setResultPage] = useState(true)
@@ -88,7 +88,7 @@ function MetaTestAnswer ({metaData, handleModalClose}) {
       expactedAnswer={expactedAnswer} 
       result={result} 
       comment={comment} 
-      handleModalClose={handleModalClose}/>
+      handleOpenMetaTest={handleOpenMetaTest}/>
     }  
     </>
   );

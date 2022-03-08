@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Metatest.css';
 
 
-function MetaTestResult ({expactedAnswer, result, comment, handleModalClose}) {
+function MetaTestResult ({expactedAnswer, result, comment, handleOpenMetaTest }) {
   /* TODO : 정답을 확인하는 창*/
 //  예상스코어와 실제 정답을 사이의 비교하는 함수 구현 //삼겹살
 
@@ -19,7 +19,7 @@ function MetaTestResult ({expactedAnswer, result, comment, handleModalClose}) {
           <h2>결과</h2>
           <h2>{comment}</h2>
           <div>
-            <button onClick={handleModalClose}>닫기</button>
+            <button onClick={handleOpenMetaTest}>닫기</button>
           </div>
         </div>  
       </div>
