@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import PlanWriteModal from "../components/planner/PlanFormModal";
 import PlanStack from "../components/planner/PlanStats";
-import NavSignOut from "../components/NavSignOut";
 import Mypage from "../components/sign/Mypage";
 
-function Plannerpage({ isOpenMypage, openMypageHandler }) {
+function Plannerpage({ isOpenMypage, userInfo }) {
+  
+ 
   const [isOpenPlan, setIsOpenPlan] = useState(false);
   const openModalHandler = () => {
     setIsOpenPlan(!isOpenPlan);
@@ -51,9 +52,12 @@ function Plannerpage({ isOpenMypage, openMypageHandler }) {
 
   const { success, effort, fail } = todayPlan;
 
+  if(!userInfo){
+    return "로그인이 필요한 서비스 입니다.";
+  }
+
   return (
     <div>
-      <NavSignOut openMypageHandler={openMypageHandler} />
       <div className="planner">
         <div className="plan-container">
           <div className="plan-header">
