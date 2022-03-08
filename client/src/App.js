@@ -60,10 +60,6 @@ function App() {
     });
   };
 
-  // 
-
-  
-
   return (
     <div className="App">
       {/* 네브바 로그인 여부를 props로 전달 필요*/}

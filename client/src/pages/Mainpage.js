@@ -22,7 +22,9 @@ function Mainpage() {
             메타인지 관련 내용 메타인지 관련 내용 메타인지 관련 내용 메타인지 관련 내용 메타인지 관련 내용
             메타인지 관련 내용 메타인지 관련 내용 메타인지 관련 내용 메타인지 관련 내용 메타인지 관련 내용
           </div>
-            <img alt="" src="../components/images/gym-sad.gif" />
+          <>
+            <img margin-top="10px" alt="이미지 넣고 싶습니다." src="https://user-images.githubusercontent.com/89363048/157147822-b8886302-2f83-4833-a57e-15d5a9e68f7f.gif" />
+          </>  
           <div className="mainpage-test">
             <button className="mainpage-test-btn" onClick={handleOpenMetaTest}>테스트하기</button>
             {isMetaTest ? <MetaTestQuiz handleOpenMetaTest={handleOpenMetaTest}/> : null}

@@ -16,6 +16,7 @@ font-style: normal;
 .planner {
   /* border: 5px solid #000; */
   margin-top: 100px;
+  height: 100vh;
 }
 .plan-container {
   /* border: 2px solid blue; */
@@ -30,7 +31,7 @@ font-style: normal;
   display: flex;
   /* border: 1px solid red; */
   width: 600px;
-  justify-content:space-between;
+  justify-content:center;
   align-items: center;
 }
 .plan-list {
@@ -49,20 +50,22 @@ font-style: normal;
   margin-bottom: 20px;
 }
 
-.plan-list li {
+.plan-list input {
   /* border: 1px solid #000; */
   width: 400px;
   height: 20px;
   padding: 10px 0;
   text-align: left;
-  
+  border: none;
+  border-bottom: 1px solid #000;
+  outline: none;
 }
 
 .plan-btn {
   border: none;
   border-radius: 10px;
   margin-left: 5px;
-  padding: 3px 10px;
+  padding: 12px 10px;
   cursor: pointer;
   font-size: 16px;
 }
@@ -346,3 +349,5 @@ font-style: normal;
   justify-content: center;
   background: rgba(0, 0, 0, 0.5); 
 }
+
+
