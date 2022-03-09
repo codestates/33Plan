@@ -46,7 +46,7 @@ function Plannerpage({ userInfo }) {
   const localStorageClear = () => {
     localStorage.clear();
   };
-
+  
   /* plan 카테고리별 카운트 */
   const [countSuccess, setCountSuccess] = useState(
     () => JSON.parse(window.localStorage.getItem("success")) || 0
@@ -99,70 +99,66 @@ function Plannerpage({ userInfo }) {
   //     axios.post("https://localhost:3000//planner/register/:id", {});
   //   }
   //   const { plan1, plan2, plan3 } = todos;
-  
   // };
-
-  if (!userInfo) {
-    return alert("로그인 후 이용하세요");
-  } else {
-    return (
-      <>
-        <div className="planner">
-          <div className="plan-container">
-            <div className="plan-header">
-              <h1>오늘 wooga 님이 할 일</h1>
-            </div>
-            {todos.length <= 3 && countSum < 9 ? (
-              <form className="plan-list" onSubmit={handleFormSubmit}>
-                <input
-                  name="todo"
-                  type="text"
-                  placeholder="오늘 할 일 3가지를 작성해 주세요"
-                  value={todo}
-                  onChange={handleInputChange}
-                />
-                <button className="plan-btn" type="submit">
-                  작성 완료
-                </button>
-              </form>
-            ) : (
-              <form>
-                <button type="submit" onClick={localStorageClear}>
-                  모두 끝났습니다^0^
-                </button>
-              </form>
-            )}
-            <ul className="plan-items">
-              {todos.map((todo) => (
-                <li className="plan-item" key={todo.id}>
-                  <span className="plan-item-text">{todo.text}</span>
-                  <span>
-                    <CategoryBtn
-                      todoId={todo.id}
-                      handleTodoCategory={handleTodoCategory}
-                    />
-                    <button
-                      className="btn"
-                      type="button"
-                      onClick={() => handleDeleteTodo(todo.id)}
-                    >
-                      삭제
-                    </button>
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <PlanStack
-              countSuccess={countSuccess}
-              countEffort={countEffort}
-              countFail={countFail}
-              countSum={countSum}
-            />
+  
+  return (
+    <>
+      <div className="planner">
+        <div className="plan-container">
+          <div className="plan-header">
+            <h1>오늘 wooga 님이 할 일</h1>
           </div>
+          {todos.length <= 3 && countSum < 9 ? (
+            <form className="plan-list" onSubmit={handleFormSubmit}>
+              <input
+                name="todo"
+                type="text"
+                placeholder="오늘 할 일 3가지를 작성해 주세요"
+                value={todo}
+                onChange={handleInputChange}
+              />
+              <button className="plan-btn" type="submit">
+                작성 완료
+              </button>
+            </form>
+          ) : (
+            <form>
+              <button type="submit" onClick={localStorageClear}>
+                모두 끝났습니다^0^
+              </button>
+            </form>
+          )}
+          <ul className="plan-items">
+            {todos.map((todo) => (
+              <li className="plan-item" key={todo.id}>
+                <span className="plan-item-text">{todo.text}</span>
+                <span>
+                  <CategoryBtn
+                    todoId={todo.id}
+                    handleTodoCategory={handleTodoCategory}
+                  />
+                  <button
+                    className="btn"
+                    type="button"
+                    onClick={() => handleDeleteTodo(todo.id)}
+                  >
+                    삭제
+                  </button>
+                </span>
+              </li>
+            ))}
+          </ul>
+          <PlanStack
+            countSuccess={countSuccess}
+            countEffort={countEffort}
+            countFail={countFail}
+            countSum={countSum}
+          />
         </div>
-      </>
-    );
-  }
+      </div>
+    </>
+  );
+  
 }
 
 export default Plannerpage;

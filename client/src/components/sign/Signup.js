@@ -1,48 +1,70 @@
 import React, { useState } from 'react';
-import { useHistory,Link } from 'react-router-dom';
 import axios from 'axios';
+import "./Signin.css";
+import { useHistory } from "react-router-dom";
 
 
-function Signup ({handleClose}) {
+function Signup () {
   /* TODO : Mainpage 만들기. */
-  const [userinfo, setuserinfo] = useState({
+  const [userInfo, setUserInfo] = useState({
     email: '',
     password: '',
+    rePassword:'',
     nickname: '',
-    mobile: ''
+    phone: ''
   });
+  // 에러메세지
   const [errorMessage, setErrorMessage] = useState('');
 
-  const history = useHistory();
+  // 비밀번호 일치여부 확인 
+  const [errorPassword, setErrorPassword] = useState('');
 
+
+   
   const handleInputValue = (key) => (e) => {
-    setuserinfo({ ...userinfo, [key]: e.target.value });
+    setUserInfo({ ...userInfo, [key]: e.target.value });
+    isValid();
   };
   const handleSignup = async () => {
-    // TODO : 서버에 회원가입을 요청 후 로그인 페이지로 이동하세요.
-    const {email, password, nickname, mobile} = userinfo
-    if(!email || !password || !nickname || !mobile) {
+    const {email, password, nickname, phone} = userInfo
+    if(!email || !password || !nickname || !phone) {
       return setErrorMessage("모든 항목은 필수입니다")
     }
-    console.log("회원정보 요청 ",userinfo)
+    console.log("회원정보 요청 ",userInfo)
     await axios.post('https://localhost:4000/users/signup',
-       userinfo ,{
+      userInfo ,{
       headers: { 'Content-Type': 'application/json'}
     })
     .then((res)=>{
-       if(res.data.message === 'ok'){
-          return history.push('/')
-       }
       // 회원가입 완료 되면 첫 페이지로 돌아가게한다.
+       if(res.data.message === 'Successfully Signed Up'){
+        return history.push('/')
+       }
     }).catch((err)=>{
       console.log(err)
     })
   };
 
+  // 비밀번호 유효성 검사 확인 
+  const isValid = () => {
+    if(String(userInfo.password) !== String(userInfo.rePassword)){
+      setErrorPassword('비밀번호가 일치하지 않습니다.')
+    } else {
+      setErrorPassword(null)
+    }
+  }
+
+
+  // 회원가입 뒤로가기 기능 
+  const history = useHistory()
+
+  const handleGoback = () => {
+    return history.push('/')
+  }
 
   return (
-    <div className="sign-page">
-    <center className="signup-page-container">
+    <div className="mainpage">
+    <center className="mypage-container">
       <h1>Sign Up</h1>
       <div>모든 항목은 필수입니다</div>
       <form className="sign-form" onSubmit={(e) => e.preventDefault()}>
@@ -58,27 +80,32 @@ function Signup ({handleClose}) {
           />
         </div>
         <div className="sign-form">
+          <span>비밀번호 확인</span>
+          <input
+            type='password'
+            onChange={handleInputValue('rePassword')}
+          />
+        </div>
+        <div className="sign-form">{errorPassword}</div>
+        <div className="sign-form">
           <span>닉네임</span>
           <input type='text' onChange={handleInputValue('nickname')}/>
         </div>
         <div className="sign-form">
           {' '}
           <span>전화번호</span>{' '}
-          <input type='tel'  onChange={handleInputValue('mobile')}/>
+          <input type='tel'  onChange={handleInputValue('phone')}/>
         </div>
-        <button
-          className='btn btn-signup'
-          type='submit'
-          onClick={handleSignup}
-        >
-          회원가입 신청
-        </button>
-        <br />
-        <br />
-        <Link to="/">
-          <button className="sign-form">닫기</button>
-        </Link>
-        <div className="sign-form">{errorMessage}</div>
+          <button
+            className='btn btn-signup'
+            type='submit'
+            onClick={handleSignup}
+          >회원가입 신청
+          </button>
+          <div className="sign-form">{errorMessage}</div>
+          <br />
+          <br />
+          <button className="sign-form" onClick={handleGoback}>뒤로가기</button>
       </form>
     </center>
   </div>
