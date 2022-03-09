@@ -1,111 +1,90 @@
-import React, { useState } from "react";
-import PlanWriteModal from "../components/planner/PlanFormModal";
-import PlanStack from "../components/planner/PlanStats";
-import NavSignOut from "../components/NavSignOut";
-import Mypage from "../components/sign/Mypage";
+import React, { useEffect, useState } from "react";
+// import PlanWriteModal from "../components/planner/PlanFormModal";
+// import PlanStack from "../components/planner/PlanStats";
 
-function Plannerpage({ isOpenMypage, openMypageHandler }) {
-  const [isOpenPlan, setIsOpenPlan] = useState(false);
-  const openModalHandler = () => {
-    setIsOpenPlan(!isOpenPlan);
-    console.log("open");
-  };
-  const [planContent, setPlanContent] = useState({
-    first: "",
-    second: "",
-    third: "",
+function Plannerpage({userInfo}) {
+  const [todos, setTodos] = useState(() => {
+    const savedTodos = localStorage.getItem('todos');
+    if(savedTodos) {
+      return JSON.parse(savedTodos);
+    } else return [];
   });
-
-  const handleInputValue = (key) => (e) => {
-    setPlanContent({ ...planContent, [key]: e.target.value });
-    console.log(planContent);
+  const [todo, setTodo] = useState("");
+  
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+  
+  const handleInputChange = (e) => {
+    setTodo(e.target.value);
   };
-  console.log(planContent);
-
-  const handleClose = function () {
-    setIsOpenPlan(false)
+  
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (todo !== "" && todos.length < 3) {
+      setTodos([
+        ...todos,
+        { id: todos.length + 1, text: todo.trim(), category: "" },
+      ]);
+      setTodo("");
+    } else if(todo === '') {
+      alert('할 일을 작성해주세요')
+    }
   };
 
-  const { first, second, third } = planContent;
-  console.log(first);
-  return (
-    <div>
-      <NavSignOut openMypageHandler={openMypageHandler} />
-      <div className="planner">
-        <div className="plan-container">
-          <div className="plan-header">
-            <h1>오늘 wooga 님이 할 일</h1>
-            <button className="plan-modal btn" onClick={openModalHandler}>
-              작성하기
-            </button>
-          </div>
-
-          <ul className="plan-list">
-            <div className="plan-box">
-              <li>{first}</li>
-              <div className="plan-btn-box">
-                <button className="plan-btn">good</button>
-                <button className="plan-btn">trying</button>
-                <button className="plan-btn">bad</button>
-              </div>
+  const handleDeleteTodo = () => {
+    localStorage.removeItem("todos")
+    // let target = e.target.value;
+    // let newTodos = todos.filter((todo) => todo.id !== target.id);
+    // setTodos(newTodos);
+    // let idx = 0;
+    // users = JSON.parse(localStorage.getItem("users") || "[]"); //데이터를 가져옴
+    // users.splice(idx,1); //삭제할 idx를 처리
+    // localStorage.setItem("users", JSON.stringify(users)); setItem을 통해서 업데이트 해줌
+    //? 데이터 정보를 어떻게 전달받지
+  }
+  
+  if (!userInfo) {
+    return alert("로그인 후 이용하세요");
+  } else {
+    return (
+      <>
+        <div className="planner">
+          <div className="plan-container">
+            <div className="plan-header">
+              <h1>오늘 wooga 님이 할 일</h1>
             </div>
-            <div className="plan-box">
-              <li>{second}</li>
-              <div className="plan-btn-box">
-                <button className="plan-btn">good</button>
-                <button className="plan-btn">trying</button>
-                <button className="plan-btn">bad</button>
-              </div>
-            </div>
-            <div className="plan-box">
-              <li>{third}</li>
-              <div className="plan-btn-box">
-                <button className="plan-btn">good</button>
-                <button className="plan-btn">trying</button>
-                <button className="plan-btn">bad</button>
-              </div>
-            </div>
-          </ul>
-        </div>
-        {isOpenPlan ? (
-          <PlanWriteModal
-            handleInputValue={handleInputValue}
-            handleClose={handleClose}
-            planContent={planContent}
-          />
-        ) : null}
-        {isOpenMypage ? <Mypage /> : null}
-
-        <div className="plan-analyse-container">
-          <div className="plan-analyse-list">
-            <ul className="plan-analyse-box">
-              <li className="plan-analyse">
-                <span className="plan-analyse-title">오늘 잘한 일</span>
-                <ul className="plan-analyse-text">
-                  <li>버튼 만들기</li>
-                  <li>잘한 일/ 노력한 일/ 못한 일 레이아웃아웃아웃아웃</li>
-                </ul>
-              </li>
-              <li className="plan-analyse">
-                <span className="plan-analyse-title">오늘 노력한 일</span>
-                <ul className="plan-analyse-text">
-                  <li>어쩌고 저쩌고 어쩔삼성 비스포크</li>
-                </ul>
-              </li>
-              <li className="plan-analyse">
-                <span className="plan-analyse-title">오늘 못한 일</span>
-                <ul className="plan-analyse-text">
-                  <li>어쩌고 저쩌고 어쩔삼성 비스포크포크포크</li>
-                </ul>
-              </li>
+            {todos.length < 3 ? (
+              <form className="plan-list" onSubmit={handleFormSubmit}>
+                <input
+                  name="todo"
+                  type="text"
+                  placeholder="오늘 할 일 3가지를 작성해 주세요"
+                  value={todo}
+                  onChange={handleInputChange}
+                />
+                <button className="plan-btn" type="submit">작성 완료</button>
+              </form>
+            ) : null}
+            <ul>
+              {todos.map((todo, idx) => (
+                <li key={idx}>
+                  <span>{todo.text}</span>
+                  <button
+                    className="btn"
+                    type="button"
+                    onClick={handleDeleteTodo()}
+                  >
+                    삭제
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
-      </div>
-
-      <PlanStack />
-    </div>
-  );
+      </>
+    );
+  }
 }
 
 export default Plannerpage;
