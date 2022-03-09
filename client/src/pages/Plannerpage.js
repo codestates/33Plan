@@ -3,8 +3,13 @@ import PlanStack from "../components/planner/PlanStats";
 import CategoryBtn from "../components/planner/CategoryBtn";
 import axios from "axios";
 
+axios.defaults.withCredentials = true;
+
 function Plannerpage({ userInfo }) {
   /* plan 작성 */
+  const planUserInfo = {...userInfo}
+
+
   const [todos, setTodos] = useState(() => {
     const savedTodos = localStorage.getItem("todos");
     if (savedTodos) {
@@ -100,13 +105,21 @@ function Plannerpage({ userInfo }) {
   //   }
   //   const { plan1, plan2, plan3 } = todos;
   // };
-  
+  if(!planUserInfo.email){
+    return (
+      <div className="planner">
+        <div className="plan-container">
+          <h1>로그인이 필요한 페이지 입니다.</h1>
+        </div>
+      </div>
+    )
+  } 
   return (
     <>
       <div className="planner">
         <div className="plan-container">
           <div className="plan-header">
-            <h1>오늘 wooga 님이 할 일</h1>
+            <h1>오늘 {planUserInfo.nickname} 님이 할 일</h1>
           </div>
           {todos.length <= 3 && countSum < 9 ? (
             <form className="plan-list" onSubmit={handleFormSubmit}>

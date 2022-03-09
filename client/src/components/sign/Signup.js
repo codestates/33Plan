@@ -3,6 +3,8 @@ import axios from 'axios';
 import "./Signin.css";
 import { useHistory } from "react-router-dom";
 
+axios.defaults.withCredentials = true;
+
 
 function Signup () {
   /* TODO : Mainpage 만들기. */
@@ -38,7 +40,7 @@ function Signup () {
     .then((res)=>{
       // 회원가입 완료 되면 첫 페이지로 돌아가게한다.
        if(res.data.message === 'Successfully Signed Up'){
-        return history.push('/')
+        history.push('/login')
        }
     }).catch((err)=>{
       console.log(err)

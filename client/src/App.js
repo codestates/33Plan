@@ -1,5 +1,4 @@
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
 import Mainpage from "./pages/Mainpage";
 import Footer from "./components/Footer";
@@ -10,17 +9,20 @@ import Signup from "./components/sign/Signup";
 import Mypage from "./components/sign/Mypage";
 import axios from "axios";
 
-
 import "./App.css";
+
+
+axios.defaults.withCredentials = true;
 
 function App() {
 
   const history = useHistory();
   
   // 로그인 되면 nav바 내용 변경
-  const [isLogin, setIsLogin] = useState(true)
+  const [isLogin, setIsLogin] = useState(false)
   
   const [userInfo, setUserinfo] = useState({
+    id:'',
     email: '',
     nickname: '',
     phone:'',  
@@ -50,16 +52,22 @@ function App() {
     })
   };
 
-  // useEffect(() => {
-  //   isAuthenticated();
-  // }, [isLogin]);
+  const handleResponseSuccess = () => {
+    isAuthenticated();
+  };
+
+  useEffect(() => {
+    isAuthenticated();
+  }, []);
   
   // 로그아웃 클릭시 포스트 요청 및 메인페이지로 이동
   const handleLogout = () => {
-    axios.post('https://localhost:4000/users/logout').then((res) => {
+    axios.post('https://localhost:4000/users/logout',{},{
+      withCredentials:true,
+    }).then((res) => {
       setUserinfo(null);
       setIsLogin(false);
-      return history.push('/');
+      history.push('/');
     });
   };
 
@@ -82,7 +90,7 @@ function App() {
           </Route>
           {/* 로그인페이지 */}
           <Route path="/login">
-            <Signin isAuthenticated={isAuthenticated}/>
+            <Signin handleResponseSuccess={handleResponseSuccess} />
           </Route>
            {/* 회원가입 */}
           <Route path="/signup">
