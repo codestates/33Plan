@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import './Signin.css';
 import axios from 'axios';
 
+axios.defaults.withCredentials = true;
 
-function Signin ({isAuthenticated}) {
+
+function Signin ({handleResponseSuccess}) {
   /* TODO : Mainpage 만들기. */
   const [loginInfo, setLoginInfo] = useState({
     email: '',
@@ -27,7 +29,12 @@ function Signin ({isAuthenticated}) {
         withCredentials: true,
       })
       .then((res) => {
-        isAuthenticated()
+        handleResponseSuccess()
+      })
+      .catch((err) => {
+        console.log(err)
+        if(err.data.message === "No matching user information")
+        setErrorMessage('회원정보가 일치하지 않습니다.')
       })
     }
   };
