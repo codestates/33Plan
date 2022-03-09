@@ -12,4 +12,4 @@ export ACCESS_SECRET=$(aws ssm get-parameters --region ap-northeast-2 --names AC
 export S3_URL=$(aws ssm get-parameters --region ap-northeast-2 --names S3_URL --query Parameters[0].Value | sed 's/"//g')
 export HTTPS_PORT=$(aws ssm get-parameters --region ap-northeast-2 --names HTTPS_PORT --query Parameters[0].Value | sed 's/"//g')
 
-authbind --deep pm2 start app.js
+authbind --deep pm2 start index.js
