@@ -6,53 +6,19 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 function Plannerpage({ userInfo }) {
-  /* plan 작성 */
-  const planUserInfo = {...userInfo}
-
-
+  const planUserInfo = { ...userInfo };
+  
+  //* plan localStorage에서 가져오기
   const [todos, setTodos] = useState(() => {
     const savedTodos = localStorage.getItem("todos");
     if (savedTodos) {
       return JSON.parse(savedTodos);
     } else return [];
   });
+
   const [todo, setTodo] = useState("");
 
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
-
-  const handleInputChange = (e) => {
-    setTodo(e.target.value);
-  };
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    if (todo !== "" && todos.length < 3) {
-      setTodos([...todos, { id: todos.length + 1, text: todo.trim() }]);
-      setTodo("");
-    } else if (todo === "") {
-      alert("할 일을 작성해주세요");
-    } else if (todos.length === 3) {
-      setTodo("");
-      alert("할 일을 모두 작성하셨어요~^0^");
-    }
-  };
-
-  // todo: todos 배열의 객체 id값이 중복되지 않게 주어져야한다
-  // if(countSum === 3 && todos.length < 3)??
-
-  /* localStorage todo 삭제 */
-  const handleDeleteTodo = (todoId) => {
-    setTodos(todos.filter((todo) => todo.id !== todoId));
-  };
-
-  /* localStorage 전체 삭제 */
-  const localStorageClear = () => {
-    localStorage.clear();
-  };
-  
-  /* plan 카테고리별 카운트 */
+  //* plan 카테고리별 카운트
   const [countSuccess, setCountSuccess] = useState(
     () => JSON.parse(window.localStorage.getItem("success")) || 0
   );
@@ -62,6 +28,16 @@ function Plannerpage({ userInfo }) {
   const [countFail, setCountFail] = useState(
     () => JSON.parse(window.localStorage.getItem("fail")) || 0
   );
+
+  //* 전체 기간동안 성공한 일 카운트
+  const [totalSuccess, setTotalSuccess] = useState(0);
+  const [totalEffortCount, setTotalEffortCount] = useState(0);
+  const [totalFailCount, setTotalFailCount] = useState(0);
+
+  //* 서버로 get 요청 함수 실행
+  useEffect(() => {
+    countTotalValue();
+  }, [countSuccess, countEffort, countFail]);
 
   useEffect(() => {
     localStorage.setItem("success", JSON.stringify(countSuccess));
@@ -73,9 +49,109 @@ function Plannerpage({ userInfo }) {
     localStorage.setItem("fail", JSON.stringify(countFail));
   }, [countFail]);
 
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
+
+  const handleInputChange = (e) => {
+    setTodo(e.target.value);
+  };
+
+  const handleCountTotal = (data) => {
+    const { successCount, effortCount, failCount } = data;
+    setTotalSuccess(successCount);
+    setTotalEffortCount(effortCount);
+    setTotalFailCount(failCount);
+  };
+
+  const countTotalValue = () => {
+    axios
+      .get(`https://localhost:4000/planner/summary/${planUserInfo.id}`, {
+        headers: {
+          Accept: "application/json",
+        },
+      })
+      .then((res) => {
+        handleCountTotal(res.data.data);
+        // console.log("res: ", res.data.data);
+      })
+  };
+
+  const handleCountValue = (todoId, key) => {
+    const getPlan = (todos, todoId) => {
+      for (let i = 0; i < todos.length; i++) {
+        if (todos[i].id === todoId) return todos[i].text;
+      }
+    };
+
+    const plan = getPlan(todos, todoId);
+
+    // console.log(todos);
+    console.log("유저정보: ", planUserInfo);
+    console.log("플랜: ", plan);
+
+    if (todos && planUserInfo) {
+      axios
+        .post(
+          `https://localhost:4000/planner/register/${planUserInfo.id}`,
+          {
+            plan,
+          },
+          {
+            "Content-Type": "application/json",
+          }
+        )
+        .then((res) => {
+          // console.log(res); // plans 테이블에 삽입된 레코드의 결과 반환 => res.data.data.planData
+          axios
+            .post(
+              `https://localhost:4000/planner/classification/${key}/${res.data.data.id}`,
+              {
+                plan,
+              },
+              {
+                "Content-Type": "application/json",
+              }
+            )
+            .catch((error) => {
+              console.log(error);
+            });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (todo !== "" && todos.length < 3) {
+      setTodos([...todos, { id: Date.now(), text: todo.trim() }]);
+      setTodo("");
+    } else if (todo === "") {
+      alert("할 일을 작성해주세요");
+    } else if (todos.length === 3) {
+      setTodo("");
+      alert("할 일을 모두 작성하셨어요~^0^");
+    }
+  };
+
+  /* localStorage todo 삭제 */
+  const handleDeleteTodo = (todoId) => {
+    setTodos(todos.filter((todo) => todo.id !== todoId));
+  };
+
+  /* localStorage 전체 삭제 */
+  const localStorageClear = () => {
+    localStorage.clear();
+  };
+
   let countSum = countSuccess + countEffort + countFail;
 
   const handleTodoCategory = (todoId, key) => {
+    handleCountValue(todoId, key);
+
     if (key === "success") {
       setCountSuccess(countSuccess + 1);
       handleDeleteTodo(todoId);
@@ -99,21 +175,15 @@ function Plannerpage({ userInfo }) {
   console.log(date1);
   */
 
-  // const handleCountValue = () => {
-  //   if(todos && userInfo){
-  //     axios.post("https://localhost:3000//planner/register/:id", {});
-  //   }
-  //   const { plan1, plan2, plan3 } = todos;
-  // };
-  if(!planUserInfo.email){
+  if (!planUserInfo.email) {
     return (
       <div className="planner">
         <div className="plan-container">
           <h1>로그인이 필요한 페이지 입니다.</h1>
         </div>
       </div>
-    )
-  } 
+    );
+  }
   return (
     <>
       <div className="planner">
@@ -130,7 +200,7 @@ function Plannerpage({ userInfo }) {
                 value={todo}
                 onChange={handleInputChange}
               />
-              <button className="plan-btn" type="submit">
+              <button className="plan-list-btn" type="submit">
                 작성 완료
               </button>
             </form>
@@ -151,11 +221,11 @@ function Plannerpage({ userInfo }) {
                     handleTodoCategory={handleTodoCategory}
                   />
                   <button
-                    className="btn"
+                    className="plan-remove-btn"
                     type="button"
                     onClick={() => handleDeleteTodo(todo.id)}
                   >
-                    삭제
+                    <i className="fa-solid fa-trash"></i>
                   </button>
                 </span>
               </li>
@@ -166,12 +236,14 @@ function Plannerpage({ userInfo }) {
             countEffort={countEffort}
             countFail={countFail}
             countSum={countSum}
+            totalSuccess={totalSuccess}
+            totalEffortCount={totalEffortCount}
+            totalFailCount={totalFailCount}
           />
         </div>
       </div>
     </>
   );
-  
 }
 
 export default Plannerpage;
