@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
 import Mainpage from "./pages/Mainpage";
@@ -24,6 +25,7 @@ function App() {
     nickname: '',
     phone:'',  
   });
+
   // 사용자 정보를 호출하고, 이에 성공하면 로그인 상태를 바꿉시다.
   const isAuthenticated = async () => {
     await axios.get('https://localhost:4000/users/auth',
@@ -71,7 +73,7 @@ function App() {
             <Mainpage />
           </Route>
           {/* 플래너 페이지 */}
-``        <Route path="/planner">
+          <Route path="/planner">
             <Plannerpage userInfo={userInfo}/>
           </Route>
           {/* 유저정보 */}

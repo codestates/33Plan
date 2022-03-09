@@ -9,15 +9,15 @@ module.exports = {
   patch: async (req, res) => {
     // 토큰 확인
     // console.log(req.headers.authorization)
-    if (!req.headers.authorization) {
-      res.status(401).json({
+    if (!req.cookies.accessToken) {
+      res.status(400).json({
         data: null,
-        message: "Invalid token",
+        message: "not Authorized",
       });
     } else {
       try {
         const { nickname, password, phone } = req.body;
-        const accessToken = req.headers.authorization.split(" ")[1];
+        const accessToken = req.cookies.accessToken;
         const decoded = verify(accessToken, process.env.ACCESS_SECRET);
         if (password) {
           if (!validatePW(password)) {
@@ -35,16 +35,13 @@ module.exports = {
             });
           }
         }
-        const checkNickname = await users.findOne({
-          where: {
-            nickname,
-          },
-        });
 
-        if (checkNickname) {
+        const checkNickname = await users.findByPk(decoded.id);
+
+        if (checkNickname.nickname === nickname) {
           return res.status(409).json({
             data: null,
-            message: "email already exists",
+            message: "nickname already exists",
           });
         }
 
@@ -71,6 +68,10 @@ module.exports = {
         });
       } catch (error) {
         console.error(error);
+        res.status(401).json({
+          data: null,
+          message: "Invalid token",
+        });
       }
     }
   },

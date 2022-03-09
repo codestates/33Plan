@@ -24,49 +24,70 @@ module.exports = {
     if (!validateEmail(email)) {
       res.status(400).send({ message: "Invalid email. please check it again" });
     } else if (!validatePW(password)) {
-      res.status(400).send({ message: "Invalid password. please check it again" });
+      res
+        .status(400)
+        .send({ message: "Invalid password. please check it again" });
     } else if (!validatePhone(phone)) {
-      res.status(400).send({ message: "Invalid phone number. please check it again" });
+      res
+        .status(400)
+        .send({ message: "Invalid phone number. please check it again" });
     } else {
       // 유효성 검사 통과한 경우
       // 1. 데이터베이스에 중복되는 내용 있는지 확인 후 없으면 데이터 삽입
       // 2. 결과 데이터로 토큰 생성 후 클라이언트에 전달
       try {
-        const [userData, created] = await users.findOrCreate({
+        const checkNickname = await users.findOne({
           where: {
             nickname,
-            email,
-            password,
-            phone,
           },
         });
-
-        if (!created) {
-          res.status(409).send({ message: "email or nickname already exists" });
-        } else {
-          const { id, nickname, email, phone, updatedAt, createdAt } =
-            userData.dataValues;
-          const userInfo = {
-            id,
-            nickname,
+        const checkEmail = await users.findOne({
+          where: {
             email,
-            phone,
-            updatedAt,
-            createdAt,
-          };
-
-          const accessToken = sign(userInfo, process.env.ACCESS_SECRET, {
-            expiresIn: 60 * 60,
+          },
+        });
+        if (checkNickname || checkEmail) {
+          res.status(409).send({
+            message: "nickname or email already exists",
+          });
+        } else {
+          const [userData, created] = await users.findOrCate({
+            where: {
+              nickname,
+              email,
+              password,
+              phone,
+            },
           });
 
-          res
-            .status(201)
-            .cookie("accessToken", accessToken, {
-              httpOnly: true,
-              secure: true,
-              sameSite: "none",
-            })
-            .send({ message: "Successfully Signed Up" });
+          if (!created) {
+            res.status(409).send({ message: "already exists" });
+          } else {
+            const { id, nickname, email, phone, updatedAt, createdAt } =
+              userData.dataValues;
+            const userInfo = {
+              id,
+              nickname,
+              email,
+              phone,
+              updatedAt,
+              createdAt,
+            };
+
+            const accessToken = sign(userInfo, process.env.ACCESS_SECRET, {
+              expiresIn: 60 * 60,
+            });
+
+            res
+              .status(201)
+              .cookie("accessToken", accessToken, {
+                maxAge: 60 * 60,
+                httpOnly: true,
+                secure: true,
+                sameSite: "none",
+              })
+              .send({ message: "Successfully Signed Up" });
+          }
         }
       } catch (error) {
         console.error(error);
