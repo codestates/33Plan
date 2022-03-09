@@ -3,8 +3,12 @@ module.exports = {
     try {
       res
         .status(205)
-        .cookie("accessToken", "", {
-          maxAge: 0,
+        .clearCookie("accessToken", {
+          sameSite: 'none',
+          domain: "localhost",
+          path: '/',
+          secure: true,
+          httpOnly: true
         })
         .json({ message: "Successfully Logged Out" });
     } catch (error) {

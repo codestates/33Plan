@@ -51,7 +51,7 @@ module.exports = {
             message: "nickname or email already exists",
           });
         } else {
-          const [userData, created] = await users.findOrCate({
+          const [userData, created] = await users.findOrCreate({
             where: {
               nickname,
               email,
@@ -81,12 +81,14 @@ module.exports = {
             res
               .status(201)
               .cookie("accessToken", accessToken, {
-                maxAge: 60 * 60,
-                httpOnly: true,
-                secure: true,
                 sameSite: "none",
+                domain: "localhost",
+                path: "/",
+                secure: true,
+                httpOnly: true,
+                maxAge: 1000 * 60 * 60 * 2
               })
-              .send({ message: "Successfully Signed Up" });
+              .json({ message: "Successfully Signed Up" });
           }
         }
       } catch (error) {

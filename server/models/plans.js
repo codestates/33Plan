@@ -13,9 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   plans.init(
     {
-      plan1: DataTypes.STRING,
-      plan2: DataTypes.STRING,
-      plan3: DataTypes.STRING,
+      plan: DataTypes.STRING,
     },
     {
       sequelize,
