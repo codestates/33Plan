@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 // import PlanWriteModal from "../components/planner/PlanFormModal";
 // import PlanStack from "../components/planner/PlanStats";
 
+
 function Plannerpage({userInfo}) {
   const [todos, setTodos] = useState(() => {
     const savedTodos = localStorage.getItem('todos');
@@ -32,20 +33,20 @@ function Plannerpage({userInfo}) {
     }
   };
 
-  const handleDeleteTodo = () => {
-    localStorage.removeItem("todos")
-    // let target = e.target.value;
-    // let newTodos = todos.filter((todo) => todo.id !== target.id);
-    // setTodos(newTodos);
-    // let idx = 0;
-    // users = JSON.parse(localStorage.getItem("users") || "[]"); //데이터를 가져옴
-    // users.splice(idx,1); //삭제할 idx를 처리
-    // localStorage.setItem("users", JSON.stringify(users)); setItem을 통해서 업데이트 해줌
-    //? 데이터 정보를 어떻게 전달받지
-  }
+  const handleDeleteTodo = (todoId) => {
   
-  if (!userInfo) {
-    return alert("로그인 후 이용하세요");
+    setTodos(todos.filter((todo) => todo.id !== todoId));
+  }
+
+  // 로그인이 되지 않을때 화면 표시
+  if (!userInfo.email) {
+    return (
+      <div className="planner">
+        <div className="plan-container">
+        <h1>로그인이 필요한 페이지 입니다.</h1>
+        </div>
+      </div>
+    );
   } else {
     return (
       <>
@@ -73,7 +74,7 @@ function Plannerpage({userInfo}) {
                   <button
                     className="btn"
                     type="button"
-                    onClick={handleDeleteTodo()}
+                    onClick={() => handleDeleteTodo(todo.id)}
                   >
                     삭제
                   </button>

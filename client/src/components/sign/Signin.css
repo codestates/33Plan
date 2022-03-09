@@ -1,15 +1,15 @@
 .sign-page{
-    position: fixed;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.5); 
-  }
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background: rgba(0, 0, 0, 0.5);  */
+}
   .sign-form{
     margin-top:10px;
     margin-bottom:3px;
@@ -33,7 +33,7 @@
     background-color: white;
     /* border: 1px solid #000; */
     width: 30vw;
-    height: 50vh;
+    height: 60vh;
     border-radius: 10px;
     display: flex;
     justify-content: center;

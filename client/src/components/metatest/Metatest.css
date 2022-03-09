@@ -122,3 +122,14 @@
     margin : auto;
     margin-top : 10px;
   }
+
+  .flexBox{
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 2px 2px 2px;
+  }
+
+  .flexBox p{
+    margin-top :10px;
+    margin-left :10px;
+  }

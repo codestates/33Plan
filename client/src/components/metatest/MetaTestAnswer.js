@@ -19,12 +19,11 @@ function MetaTestAnswer ({metaData, handleOpenMetaTest}) {
   const [inputValue, setInputValue] = useState('')
 
   //결과 저장되는 값 
-  const [result, setResult] = useState(10)
+  const [result, setResult] = useState('')
   
 
-  const handleMetaTestResult = (expactedAnswer,result) => {
+  const handleMetaTestResult = () => {
     handlecheckResult()
-    handleComment(expactedAnswer,result)
     setResultPage(false)
   }
 
@@ -36,18 +35,11 @@ function MetaTestAnswer ({metaData, handleOpenMetaTest}) {
     setResult(checkedResult.length)
   }
 
-  const [comment, setComment] = useState('')
-
-  const handleComment = (expactedAnswer,result) => {
-    if(expactedAnswer === result){
-      setComment('자기 자신을 잘 알고 있습니다.')
-    } else if(expactedAnswer < result){
-      setComment('현재 과대평가 중 입니다. 정신차리세요')
-    } else {
-      setComment('현재 과소평가 중 입니다. 빡세게 하세요')
-    }
+  // 정답 삭제 기능 
+  const handleDeleteTodo = (el) => {
+    console.log("값이 전달아뇓",el)
+    setInputAnswer(inputAnswer.filter((answer) => answer !== el));
   }
-
 
   return (
     <>
@@ -64,35 +56,44 @@ function MetaTestAnswer ({metaData, handleOpenMetaTest}) {
              </div>
              <p>{expactedAnswer}개</p>
             <h2>정답입력(단어하나씩 입력)</h2>
-            <div className="modal-metatest-input">
+            {/* 정답입력폼 */}
+            <form className="modal-metatest-input" >
               <input
                 type="text"
                 placeholder="정답입력"
                 onChange={ (e) => {setInputValue(e.target.value)}}
+                onSubmit={(e)=>e.preventDefault()}
+                value={false ? inputValue : null }
               />
               <button onClick={ (e) => {
+                e.preventDefault()
                 let newInputAnswer = [...inputAnswer];
                 newInputAnswer.push(inputValue);
                 setInputAnswer(newInputAnswer);
               }}>정답저장
               </button>
-             </div>
-            <h2>정답판</h2>
-            <p>{inputAnswer}</p>
+            </form>  
+            <ul>
+            {
+              inputAnswer.map((el, idx) => {
+                return( 
+                  <li>{el}<button key={idx} onClick={() => handleDeleteTodo(el)}>삭제</button></li>
+                )
+              })
+            }
+            </ul>
             <div>
               <button onClick={handleMetaTestResult}>결과 확인</button>
             </div>
           </div>  
         </div>
-    : <MetaTestResult   
-      expactedAnswer={expactedAnswer} 
-      result={result} 
-      comment={comment} 
-      handleOpenMetaTest={handleOpenMetaTest}/>
-    }  
+      : <MetaTestResult   
+        expactedAnswer={expactedAnswer} 
+        result={result} 
+        handleOpenMetaTest={handleOpenMetaTest}/>
+      }  
     </>
   );
 }
 
 export default MetaTestAnswer;
-
