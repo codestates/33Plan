@@ -71,6 +71,11 @@ function App() {
     });
   };
 
+  // 회원정보 업데이트 후 로그아웃 
+  const handleResponseUpdate = () => {
+    handleLogout();
+  };
+
   return (
     <div className="App">
       {/* 네브바 로그인 여부를 props로 전달 필요*/}
@@ -86,7 +91,7 @@ function App() {
           </Route>
           {/* 유저정보 */}
           <Route path="/mypage">
-            <Mypage userInfo={userInfo} setIsLogin={setIsLogin} />
+            <Mypage userInfo={userInfo} handleResponseUpdate={handleResponseUpdate}/>
           </Route>
           {/* 로그인페이지 */}
           <Route path="/login">
