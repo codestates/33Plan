@@ -5,9 +5,7 @@ const { plannerController } = require("../controller");
 
 plannerRouter.post("/register/:id", plannerController.register.post);
 
-plannerRouter.post("/revision/:id", plannerController.revision.post);
-
-plannerRouter.get("/summary/:plan_id/:user_id", plannerController.summary.get);
+plannerRouter.get("/summary/:user_id", plannerController.summary.get);
 
 // today -> good / trying / bad 분류
 plannerRouter.post("/classification/success/:plan_id", plannerController.classification.success)

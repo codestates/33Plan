@@ -45,12 +45,14 @@ module.exports = {
           res
             .status(200)
             .cookie("accessToken", accessToken, {
-              maxAge: 60 * 60, 
-              httpOnly: true,
-              secure: true,
               sameSite: "none",
+              domain: "localhost",
+              path: "/",
+              secure: true,
+              httpOnly: true,
+              maxAge: 1000 * 60 * 60 * 2
             })
-            .send({ message: "Successfully Logged In" });
+            .json({ message: "Successfully Logged In" });
         }
       } catch (error) {
         console.error(error);
