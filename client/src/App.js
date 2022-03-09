@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState } from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
 import Mainpage from "./pages/Mainpage";
 import Footer from "./components/Footer";
@@ -19,12 +19,16 @@ function App() {
   // 로그인 되면 nav바 내용 변경
   const [isLogin, setIsLogin] = useState(true)
   
-  const [userInfo, setUserinfo] = useState('');
+  const [userInfo, setUserinfo] = useState({
+    email: '',
+    nickname: '',
+    phone:'',  
+  });
   // 사용자 정보를 호출하고, 이에 성공하면 로그인 상태를 바꿉시다.
   const isAuthenticated = async () => {
     await axios.get('https://localhost:4000/users/auth',
     {
-      headers: { 'Content-Type': 'application/json'}, 
+      headers: { 'Accept': 'application/json'}, 
       withCredentials: true
     })
     .then((res) => {
@@ -44,9 +48,9 @@ function App() {
     })
   };
 
-  useEffect(() => {
-    isAuthenticated();
-  }, [isLogin]);
+  // useEffect(() => {
+  //   isAuthenticated();
+  // }, [isLogin]);
   
   // 로그아웃 클릭시 포스트 요청 및 메인페이지로 이동
   const handleLogout = () => {

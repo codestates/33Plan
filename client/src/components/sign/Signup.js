@@ -11,7 +11,7 @@ function Signup () {
     password: '',
     rePassword:'',
     nickname: '',
-    mobile: ''
+    phone: ''
   });
   // 에러메세지
   const [errorMessage, setErrorMessage] = useState('');
@@ -26,8 +26,8 @@ function Signup () {
     isValid();
   };
   const handleSignup = async () => {
-    const {email, password, nickname, mobile} = userInfo
-    if(!email || !password || !nickname || !mobile) {
+    const {email, password, nickname, phone} = userInfo
+    if(!email || !password || !nickname || !phone) {
       return setErrorMessage("모든 항목은 필수입니다")
     }
     console.log("회원정보 요청 ",userInfo)
@@ -36,10 +36,10 @@ function Signup () {
       headers: { 'Content-Type': 'application/json'}
     })
     .then((res)=>{
-       if(res.data.message === 'ok'){
+      // 회원가입 완료 되면 첫 페이지로 돌아가게한다.
+       if(res.data.message === 'Successfully Signed Up'){
         return history.push('/')
        }
-      // 회원가입 완료 되면 첫 페이지로 돌아가게한다.
     }).catch((err)=>{
       console.log(err)
     })
@@ -48,8 +48,9 @@ function Signup () {
   // 비밀번호 유효성 검사 확인 
   const isValid = () => {
     if(String(userInfo.password) !== String(userInfo.rePassword)){
-      const passwordError = setTimeout(()=> setErrorPassword('비밀번호가 일치하지 않습니다.'), 2000)
-      return () => { clearTimeout(passwordError) }
+      setErrorPassword('비밀번호가 일치하지 않습니다.')
+    } else {
+      setErrorPassword(null)
     }
   }
 
@@ -79,7 +80,7 @@ function Signup () {
           />
         </div>
         <div className="sign-form">
-          <span>다시 비밀번호 입력</span>
+          <span>비밀번호 확인</span>
           <input
             type='password'
             onChange={handleInputValue('rePassword')}
@@ -93,7 +94,7 @@ function Signup () {
         <div className="sign-form">
           {' '}
           <span>전화번호</span>{' '}
-          <input type='tel'  onChange={handleInputValue('mobile')}/>
+          <input type='tel'  onChange={handleInputValue('phone')}/>
         </div>
           <button
             className='btn btn-signup'

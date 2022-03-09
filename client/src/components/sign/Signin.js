@@ -23,10 +23,11 @@ function Signin ({isAuthenticated}) {
         email: loginInfo.email,
         password: loginInfo.password
       },{
-        headers: { 'Content-Type': 'application/json'}
+        headers: { 'Content-Type': 'application/json'},
+        withCredentials: true,
       })
       .then((res) => {
-        return isAuthenticated()
+        isAuthenticated()
       })
     }
   };
