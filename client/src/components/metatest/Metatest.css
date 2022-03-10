@@ -1,4 +1,4 @@
-.metapage{
+/* .metapage{
     width: 100vw;
     height: 90vh;
     margin-bottom: 0px;
@@ -30,10 +30,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  
-  }
+  } */
 
+  /* .sign-form{
+    margin-top:10px;
+    margin-bottom:3px;
+  } */
+  
+  /*! modal !*/
   .modal-metatest{
+    /* border: 5px solid red; */
     position: fixed;
     z-index: 999;
     left: 0;
@@ -45,15 +51,13 @@
     justify-content: center;
     background: rgba(0, 0, 0, 0.5); 
   }
-  .sign-form{
-    margin-top:10px;
-    margin-bottom:3px;
-  }
+
   .modal-metatest-container{
+    /* border: 1px solid red; */
     background-color: white;
-    width: 70vw;
-    height: 80vh;
-    border-radius: 10px;
+    width: 800px;
+    height: 600px;
+    border-radius: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,6 +66,9 @@
     padding: 20px 5px;
     box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.205) ;
     /* position: relative; */
+  }
+  .modal-metatest-container h2 {
+    color: tomato;
   }
   
   .signup-page-container{
@@ -80,22 +87,37 @@
   .modal-metatest-container-card{
     padding:0.2em;
     background-color: tomato;
+    color: #fff;
     margin-top: 2vh;
-    margin-bottom: 10vh;
-    width: 30vw;
-    height: 20vh;
-    text-align: center;
+    margin-bottom: 5vh;
+    width: 400px;
+    height: 150px;
+    /* text-align: center; */
+    justify-content: center;
+    align-items: center;
     box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.205);
     border-radius: 5px;
   }
 
-  .modal-metatest-container-second{
+  /* .modal-metatest-container-second{
     font-size: 3em;
     margin-bottom: 15vh
-  }
+  } */
 
   .modal-metatest-container-btn{
-    font-size: 2em;
+    font-size: 27px;
+    font-weight: bold;
+    border: 2px solid tomato;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: tomato;
+  }
+  .modal-metatest-container-btn:hover {
+    background-color: tomato;
+    color: #fff;
+    transition: 0.5s;
   }
 
   .card-font{
@@ -107,7 +129,7 @@
 
   .modal-metatest-answer{
     margin-bottom:30px;
-
+    border: 1px solid #000;
   }
 
   .modal-metatest-answer input{

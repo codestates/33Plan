@@ -67,7 +67,7 @@ function App() {
     }).then((res) => {
       setUserinfo(null);
       setIsLogin(false);
-      history.push('/');
+      // history.push('/');
     });
   };
 
