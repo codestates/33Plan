@@ -4,13 +4,13 @@ import CategoryBtn from "../components/planner/CategoryBtn";
 import axios from "axios";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 axios.defaults.withCredentials = true;
 
 function Plannerpage({ userInfo }) {
   const planUserInfo = { ...userInfo };
-  
+
   //* plan localStorage에서 가져오기
   const [todos, setTodos] = useState(() => {
     const savedTodos = localStorage.getItem("todos");
@@ -56,7 +56,6 @@ function Plannerpage({ userInfo }) {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
-
   const handleInputChange = (e) => {
     setTodo(e.target.value);
   };
@@ -78,7 +77,7 @@ function Plannerpage({ userInfo }) {
       .then((res) => {
         handleCountTotal(res.data.data);
         // console.log("res: ", res.data.data);
-      })
+      });
   };
 
   const handleCountValue = (todoId, key) => {
@@ -209,7 +208,11 @@ function Plannerpage({ userInfo }) {
             </form>
           ) : (
             <form>
-              <button type="submit" onClick={localStorageClear}>
+              <button
+                className="plan-reset-btn"
+                type="submit"
+                onClick={localStorageClear}
+              >
                 모두 끝났습니다^0^
               </button>
             </form>
@@ -224,7 +227,7 @@ function Plannerpage({ userInfo }) {
                     handleTodoCategory={handleTodoCategory}
                   />
                   <button
-                    className="plan-remove-btn"
+                    className="remove-btn"
                     type="button"
                     onClick={() => handleDeleteTodo(todo.id)}
                   >
