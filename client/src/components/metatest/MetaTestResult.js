@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Metatest.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 function MetaTestResult({ expactedAnswer, result, handleOpenMetaTest }) {
   // 결과 판독 멘트
@@ -21,10 +21,8 @@ function MetaTestResult({ expactedAnswer, result, handleOpenMetaTest }) {
     try {
       setError(null);
       // props를 정확하게 사용하기 위해 타입을 변경
-      if (
-        expactedAnswerNum === resultNum 
-      ) {
-        setComment("자기 자신을 잘 알고 있습니다.");
+      if (expactedAnswerNum === resultNum) {
+        setComment("자기 자신을 잘 알고 있네요.");
       } else if (Number(expactedAnswer) < Number(result)) {
         setComment("현재 과소평가 중 입니다.");
       } else {
@@ -47,7 +45,7 @@ function MetaTestResult({ expactedAnswer, result, handleOpenMetaTest }) {
     return (
       <div className="modal-metatest">
         <div className="modal-metatest-container">
-          <FontAwesomeIcon icon={faSpinner} pulse className="faspinner"/>
+          <FontAwesomeIcon icon={faSpinner} pulse className="faspinner" />
         </div>
       </div>
     );
