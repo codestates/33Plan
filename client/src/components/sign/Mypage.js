@@ -71,7 +71,7 @@ function Mypage({ userInfo, handleResponseUpdate }) {
     } else {
        axios
         .patch(
-          "https://localhost:4000/users/update",
+          `${process.env.REACT_APP_API_URL}/users/update`,
           {
             password: updateInfo.password,
             nickname: updateInfo.nickname,

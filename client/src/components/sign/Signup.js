@@ -86,11 +86,11 @@ function Signup() {
     } else if (!validateFuntion.Phone(phone)) {
       setErrorPhone("유효하지 않는 핸드폰번호 입니다.");
       // 비밀번호 더블체크
-    } else if (!validateFuntion.DoubleCheck(rePassword)) {
+    } else if (!validateFuntion.DoubleCheck(password, rePassword)) {
       setErrorRePassword("비밀번호가 일치 하지 않습니다.");
     } else {
       axios
-        .post("https://localhost:4000/users/signup", userInfo, {
+        .post(`${process.env.REACT_APP_API_URL}/users/signup`, userInfo, {
           "Content-Type": "application/json",
         })
         .then((res) => {

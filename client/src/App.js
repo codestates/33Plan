@@ -30,7 +30,7 @@ function App() {
 
   // 사용자 정보를 호출하고, 이에 성공하면 로그인 상태를 바꿉시다.
   const isAuthenticated = async () => {
-    await axios.get('https://localhost:4000/users/auth',
+    await axios.get(`${process.env.REACT_APP_API_URL}/users/auth`,
     {
       headers: { 'Accept': 'application/json'}, 
       withCredentials: true
@@ -62,7 +62,7 @@ function App() {
   
   // 로그아웃 클릭시 포스트 요청 및 메인페이지로 이동
   const handleLogout = () => {
-    axios.post('https://localhost:4000/users/logout',{},{
+    axios.post(`${process.env.REACT_APP_API_URL}/users/logout`,{},{
       withCredentials:true,
     }).then((res) => {
       setUserinfo(null);

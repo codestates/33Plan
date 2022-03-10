@@ -67,7 +67,7 @@ function Plannerpage({ userInfo }) {
 
   const countTotalValue = () => {
     axios
-      .get(`https://localhost:4000/planner/summary/${planUserInfo.id}`, {
+      .get(`${process.env.REACT_APP_API_URL}/planner/summary/${planUserInfo.id}`, {
         headers: {
           Accept: "application/json",
         },
@@ -94,7 +94,7 @@ function Plannerpage({ userInfo }) {
     if (todos && planUserInfo) {
       axios
         .post(
-          `https://localhost:4000/planner/register/${planUserInfo.id}`,
+          `${process.env.REACT_APP_API_URL}/planner/register/${planUserInfo.id}`,
           {
             plan,
           },
@@ -106,7 +106,7 @@ function Plannerpage({ userInfo }) {
           // console.log(res); // plans 테이블에 삽입된 레코드의 결과 반환 => res.data.data.planData
           axios
             .post(
-              `https://localhost:4000/planner/classification/${key}/${res.data.data.id}`,
+              `${process.env.REACT_APP_API_URL}/planner/classification/${key}/${res.data.data.id}`,
               {
                 plan,
               },
