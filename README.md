@@ -27,7 +27,7 @@
 * 사용하는 전체 기간 동안 성취한 계획을 수치화 하여 제공합니다.
 
 ## 📘 Team : wooga
-|Name|position|GIthub|
+|Name|Position|GIthub|
 |:---:|:---:|:---:|
 |김현규|Back-end|[SsankQ](https://github.com/SsankQ)|
 |이현걸|Back-end|[LeeHyeongeol](https://github.com/LeeHyeongeol)|
