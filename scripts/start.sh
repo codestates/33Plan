@@ -14,4 +14,3 @@ export S3_URL=$(aws ssm get-parameters --region ap-northeast-2 --names S3_URL --
 export HTTPS_PORT=$(aws ssm get-parameters --region ap-northeast-2 --names HTTPS_PORT --query Parameters[0].Value | sed 's/"//g')
 
 authbind --deep pm2 start index.js
-npx sequelize-cli db:migrate
