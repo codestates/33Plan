@@ -66,7 +66,7 @@ function Mypage({ userInfo, handleResponseUpdate }) {
     } else if (!validateFuntion.Phone(phone)) {
       setErrorPhone("유효하지 않는 핸드폰번호 입니다.");
       // 비밀번호 더블체크
-    } else if (!validateFuntion.DoubleCheck(rePassword)) {
+    } else if (!validateFuntion.DoubleCheck(rePassword, password)) {
       setErrorRePassword("비밀번호가 일치 하지 않습니다.");
     } else {
        axios
@@ -95,7 +95,7 @@ function Mypage({ userInfo, handleResponseUpdate }) {
       <div className="mainpage">
         <div className="mypage-container">
           <div className="mypage-form-item">
-            <h1>로그인이 필요한 페이지 입니다.</h1>
+            <h2>로그인이 필요한 페이지 입니다.</h2>
           </div>
         </div>
       </div>
@@ -149,17 +149,21 @@ function Mypage({ userInfo, handleResponseUpdate }) {
               // value={mypageUserinfo.nickname}
               onChange={handleInputValue("phone")}
             ></input>
+            
+          </dl>
+          <dl className="mypage-form-item">
             <dd className="mypage-content">{errorPhone}</dd>
           </dl>
-          <button
-            className="mypage-close-btn"
-            type="submit"
-            onClick={handleUpdate}
-          >
-            수정요청
-          </button>
+            <button
+              className="mypage-close-btn"
+              type="submit"
+              onClick={handleUpdate}
+            >
+              수정요청
+            </button>
         </form>
         <h3>{errorMessage}</h3>
+        
       </div>
     </div>
   );
