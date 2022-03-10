@@ -39,8 +39,13 @@ font-style: normal;
   margin-top: 100px;
 }
 .planner-logout {
-  height: 70vh;
+  height: 764px;
+  margin-top: 0;
 }
+.plan-container-logout{
+  margin-top: 100px;
+}
+    
 .plan-container {
   width: 100%;
   display: flex;
@@ -162,6 +167,7 @@ font-style: normal;
 
 /*** mypageModal ***/
 .mypage-container {
+  margin-top: 70px;
   background-color: white;
   width: 100%;
   border-radius: 10px;
@@ -176,7 +182,16 @@ font-style: normal;
   text-align: left;
   display: flex;
   padding: 5px;
+  /* margin-left: 40px; */
 }
+.mypage-form-error {
+  /* border: 1px solid #000; */
+  width: 330px;
+  text-align: center;
+  font-size: 15px;
+  /* margin-left: 40px; */
+}
+
 .mypage-sub-title {
   width: 80px;
 }
@@ -198,44 +213,6 @@ font-style: normal;
   height: 30px;
   cursor: pointer;
 }
-
-/*
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
-
-/* 추후 참고 자료 */
 
 /* 전체적인 폰트스타일 변경 가능 */
 .logo-img {
@@ -274,15 +251,29 @@ font-style: normal;
   background-color: var(--bg-color);
 }
 
+.signup{
+  height: 1000px;
+}
+
+.footer{
+  width: 100%;
+  height: 14vh;
+  text-align: center;
+  background-color: grey;
+  color: black;
+  padding-top: 10px;
+}
+
 .footer-container {
   display: flex;
   justify-content: center;
   height: 10vh;
   align-items: center;
-  padding: 10px;
+  padding: 2px;
   background-color: var(--foot-color);
   color: black;
   font-size: 15px;
+  width: 100%;
 }
 
 .footer-item {
@@ -328,7 +319,7 @@ font-style: normal;
 
 .mainpage-test{
   text-align: center;
-  padding: 30px;
+
 }
 .Second-page{
   position: relative;
@@ -345,5 +336,64 @@ font-style: normal;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.5); 
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* 모바일 사이즈 반응형  */
+@media screen and (max-width: 390px) {
+  .nav-container {
+    font-size: 15px;
+  }
+  .mainpage {
+    font-size: 15px;
+    height: 800px;
+  }
+  .mainpage-title {
+    font-size: 20px;
+    margin-left: 5px;
+    margin-right: 5px
+  }
+  .mainpage-img {
+    width: 200px;
+  }
+  .mainpage-test-btn{
+    width: 200px;
+  }
+  .plan-stats-list{
+    flex-direction: column;
+  }
+
+  .plan-header{
+    width: 100%;
+  }
+
+  .plan-list input{
+    width: 200px;
+  }
+  .plan-item span{
+    display: block;
+    flex-direction: column;
+  }
+  .plan-item{
+    display: flex;
+    flex-direction:column;
+    text-align: center;
+  
+  }
+  .plan-list {
+    width: 340px;
+    list-style: none;
+    padding-left: 0;
+  }
+  .plan-item li{
+    width: 100%;
+  }
+  .footer-container {
+    flex-direction: column;
+    justify-content: left;
+    padding:0px;
+  }
+  .footer {
+    height: 50vh;
+  }
 }

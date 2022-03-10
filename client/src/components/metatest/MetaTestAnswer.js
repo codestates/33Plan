@@ -7,7 +7,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function MetaTestAnswer({ metaData, handleOpenMetaTest }) {
   /* TODO : 정답을 확인하는 창*/
-  console.log(metaData);
+  // console.log(metaData);
   const [resultPage, setResultPage] = useState(true);
 
   //유저가 입력하는 예상결과값
@@ -15,7 +15,7 @@ function MetaTestAnswer({ metaData, handleOpenMetaTest }) {
 
   //유저가 입력하는 정답값
   const [inputAnswer, setInputAnswer] = useState([]);
-  console.log("입력되는 정답값", inputAnswer);
+  // console.log("입력되는 정답값", inputAnswer);
 
   //입력창에 정답입력값
   const [inputValue, setInputValue] = useState("");
@@ -40,7 +40,6 @@ function MetaTestAnswer({ metaData, handleOpenMetaTest }) {
 
   // 정답 삭제 기능
   const handleDeleteTodo = (el) => {
-    console.log("값이 전달아뇓", el);
     setInputAnswer(inputAnswer.filter((answer) => answer !== el));
   };
 
@@ -89,7 +88,7 @@ function MetaTestAnswer({ metaData, handleOpenMetaTest }) {
             <ul className="modal-metatest-list">
               {inputAnswer.map((el, idx) => {
                 return (
-                  <li className="modal-metatest-item">
+                  <li key={idx} className="modal-metatest-item">
                     {el}
                     <button
                       className="remove-btn"

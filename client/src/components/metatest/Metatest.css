@@ -1,3 +1,4 @@
+/*! modal !*/
 .modal-metatest{
   position: fixed;
   z-index: 999;
@@ -127,6 +128,7 @@ h2 {
   padding: 20px 5px;
   box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.205) ;
 }
+
 .modal-metatest-box{
   width: 700px;
   justify-content: start;
@@ -162,7 +164,7 @@ h2 {
   border-radius: 10px;
   background-color: whitesmoke;
   padding: 10px 20px;
-  margin-left: 10px;
+  /* margin-left: 10px; */
 }
 .metatest-input-btn:hover {
   background-color: var(--main-color);
@@ -190,4 +192,35 @@ h2 {
 .modal-metatest-item {
   padding: 0;
   text-align: center;
+}
+
+
+@media screen and (max-width: 412px) {
+  .modal-metatest-container{
+    width: 350px;
+    height: 750px;
+  }
+
+  .modal-metatest-container-card{
+    width: 300px;
+    height: 200px;
+  }
+  .modal-metatest-container-answer{
+    width: 350px;
+    height: 750px;
+  }
+  
+  .modal-metatest-title{
+    width: 300px;
+  }
+  .modal-metatest-list{
+    width: 700px;
+    height: 360px;
+    padding-left: 0;
+    overflow: auto;
+  }
+  h2{
+    font-size: 1.2em;
+  }
+
 }

@@ -37,6 +37,9 @@ function Plannerpage({ userInfo }) {
   const [totalEffortCount, setTotalEffortCount] = useState(0);
   const [totalFailCount, setTotalFailCount] = useState(0);
 
+  // 전체기간동안 자료 조회 랜더링
+  const [findData, setFindData] = useState(false);
+
   //* 서버로 get 요청 함수 실행
   useEffect(() => {
     countTotalValue();
@@ -176,12 +179,18 @@ function Plannerpage({ userInfo }) {
   console.log(birthday);
   console.log(date1);
   */
+  // 그동안 자료 조회 핸들러
+  const handleFindata = () => {
+    setFindData(!findData)
+  }
 
   if (!planUserInfo.email) {
     return (
       <div className="planner planner-logout">
         <div className="plan-container">
-          <h1>로그인이 필요한 페이지 입니다.</h1>
+          <div className="plan-container-logout">
+            <h2>로그인이 필요한 페이지 입니다.</h2>
+          </div>
         </div>
       </div>
     );
@@ -237,6 +246,7 @@ function Plannerpage({ userInfo }) {
               </li>
             ))}
           </ul>
+
           <PlanStack
             countSuccess={countSuccess}
             countEffort={countEffort}
@@ -245,7 +255,13 @@ function Plannerpage({ userInfo }) {
             totalSuccess={totalSuccess}
             totalEffortCount={totalEffortCount}
             totalFailCount={totalFailCount}
+            findData={findData}
           />
+          {/* 전체 데이터 조회 */}
+          {findData
+          ? null
+          :<button onClick={handleFindata} className="mainpage-test-btn">전체 결과 조회</button>
+          }
         </div>
       </div>
     </>

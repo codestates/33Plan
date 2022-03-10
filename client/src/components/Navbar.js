@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Navbar({ isLogin, handleLogout }) {
   // 로그인이 되었을때 nav-bar 메뉴 변경
