@@ -4,13 +4,14 @@ import CategoryBtn from "../components/planner/CategoryBtn";
 import axios from "axios";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
 
 axios.defaults.withCredentials = true;
 
 function Plannerpage({ userInfo }) {
   const planUserInfo = { ...userInfo };
-  
+
   //* plan localStorage에서 가져오기
   const [todos, setTodos] = useState(() => {
     const savedTodos = localStorage.getItem("todos");
@@ -37,6 +38,9 @@ function Plannerpage({ userInfo }) {
   const [totalEffortCount, setTotalEffortCount] = useState(0);
   const [totalFailCount, setTotalFailCount] = useState(0);
 
+  // 전체기간동안 자료 조회 랜더링
+  const [findData, setFindData] = useState(false);
+
   //* 서버로 get 요청 함수 실행
   useEffect(() => {
     countTotalValue();
@@ -55,7 +59,6 @@ function Plannerpage({ userInfo }) {
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
-
 
   const handleInputChange = (e) => {
     setTodo(e.target.value);
@@ -78,7 +81,7 @@ function Plannerpage({ userInfo }) {
       .then((res) => {
         handleCountTotal(res.data.data);
         // console.log("res: ", res.data.data);
-      })
+      });
   };
 
   const handleCountValue = (todoId, key) => {
@@ -177,12 +180,18 @@ function Plannerpage({ userInfo }) {
   console.log(birthday);
   console.log(date1);
   */
+  // 그동안 자료 조회 핸들러
+  const handleFindata = () => {
+    setFindData(!findData)
+  }
 
   if (!planUserInfo.email) {
     return (
       <div className="planner planner-logout">
         <div className="plan-container">
-          <h1>로그인이 필요한 페이지 입니다.</h1>
+          <div className="plan-container-logout">
+            <h2>로그인이 필요한 페이지 입니다.</h2>
+          </div>
         </div>
       </div>
     );
@@ -234,6 +243,7 @@ function Plannerpage({ userInfo }) {
               </li>
             ))}
           </ul>
+
           <PlanStack
             countSuccess={countSuccess}
             countEffort={countEffort}
@@ -242,7 +252,13 @@ function Plannerpage({ userInfo }) {
             totalSuccess={totalSuccess}
             totalEffortCount={totalEffortCount}
             totalFailCount={totalFailCount}
+            findData={findData}
           />
+          {/* 전체 데이터 조회 */}
+          {findData
+          ? null
+          :<button onClick={handleFindata} className="mainpage-test-btn">전체 결과 조회</button>
+          }
         </div>
       </div>
     </>

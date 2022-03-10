@@ -14,7 +14,7 @@ function Mainpage() {
     <>
       <div className="mainpage">
         <h2 className="mainpage-title">
-          우리는 얼마나 자신에 대해 잘 알고 있을까요?
+          얼마나 자신에 대해 잘 알고 있을까요?
         </h2>
         <div className="mainpage-container">
           <div className="mainpage-container-img">

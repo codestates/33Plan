@@ -20,8 +20,13 @@
   /* height: 100vh; */
 }
 .planner-logout {
-  height: 70vh;
+  height: 764px;
+  margin-top: 0;
 }
+.plan-container-logout{
+  margin-top: 100px;
+}
+    
 .plan-container {
   /* border: 2px solid blue; */
   width: 100%;
@@ -135,10 +140,10 @@
 
 /*** mypageModal ***/
 .mypage-container {
-  margin-top: 100px;
+  margin-top: 70px;
   background-color: white;
   /* border: 1px solid #000; */
-  width: 400px;
+  width: 100%;
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
@@ -165,8 +170,16 @@
   text-align: left;
   display: flex;
   padding: 5px;
-  margin-left: 40px;
+  /* margin-left: 40px; */
 }
+.mypage-form-error {
+  /* border: 1px solid #000; */
+  width: 330px;
+  text-align: center;
+  font-size: 15px;
+  /* margin-left: 40px; */
+}
+
 .mypage-sub-title {
   /* border: 1px solid #000; */
   width: 100px;
@@ -270,20 +283,37 @@
   /* border: 5px solid red; */
 }
 
+.signup{
+  height: 1000px;
+}
+
+.footer{
+  width: 100%;
+  height: 14vh;
+  text-align: center;
+  background-color: grey;
+  color: black;
+  padding-top: 10px;
+}
+
 .footer-container {
   display: flex;
   justify-content: center;
   height: 10vh;
   align-items: center;
-  padding: 10px;
-  background-color: grey;
-  color: black;
+  padding: 2px;
+
   font-size: 15px;
+  width: 100%;
 }
 
 .footer-item {
   margin: 5vw;
 }
+/* 
+.footer-title{
+  margin-left: 10px;
+} */
 
 .mainpage-container {
   /* border: 1px solid black; */
@@ -325,7 +355,7 @@
 
 .mainpage-test {
   text-align: center;
-  padding: 30px;
+
 }
 .Second-page {
   position: relative;
@@ -346,23 +376,60 @@
 }
 
 /* 모바일 사이즈 반응형  */
-@media screen and (max-width: 412px) {
+@media screen and (max-width: 390px) {
   .nav-container {
     font-size: 15px;
   }
   .mainpage {
     font-size: 15px;
-    height: 78vh;
+    height: 800px;
   }
   .mainpage-title {
-    font-size: 25px;
+    font-size: 20px;
     margin-left: 5px;
+    margin-right: 5px
   }
-
   .mainpage-img {
     width: 200px;
   }
   .mainpage-test-btn{
     width: 200px;
+  }
+  .plan-stats-list{
+    flex-direction: column;
+  }
+
+  .plan-header{
+    width: 100%;
+  }
+
+  .plan-list input{
+    width: 200px;
+  }
+  .plan-item span{
+    display: block;
+    flex-direction: column;
+  }
+  .plan-item{
+    display: flex;
+    flex-direction:column;
+    text-align: center;
+  
+  }
+  .plan-list {
+    width: 340px;
+    list-style: none;
+    padding-left: 0;
+  }
+  .plan-item li{
+    width: 100%;
+  }
+  .footer-container {
+    flex-direction: column;
+    justify-content: left;
+    padding:0px;
+  }
+  .footer {
+    height: 50vh;
   }
 }

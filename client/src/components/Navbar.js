@@ -9,38 +9,53 @@ function Navbar({ isLogin, handleLogout }) {
     <div>
       <nav className="nav-container">
         {/* 로고자리에 이미지로 변경도 가능 */}
+        <Link to="/" style={{ textDecoration: "none", color: "tomato" }}>
+          <div className="nav-item">33plan</div>
+        </Link>
+        <div className="nav-flex"></div>
         <NavLink
-          to="/"
+          to="/planner"
           activeStyle={{
             color: "white",
           }}
         >
-          <div className="nav-item">33plan</div>
-        </NavLink>
-        <div className="nav-flex"></div>
-        <Link to="/planner">
           <div className="nav-item">Planner</div>
-        </Link>
+        </NavLink>
         {/* 로그인 여부에 따라 구성 변경 */}
         {handleIsLogin ? (
           <>
             <Link to="/mypage">
               <div className="nav-item">Mypage</div>
             </Link>
-            <Link to="/">
+            <NavLink
+              to="/"
+              activeStyle={{
+                color: "black",
+              }}
+            >
               <div className="nav-item" onClick={handleLogout}>
                 Sign-Out
               </div>
-            </Link>
+            </NavLink>
           </>
         ) : (
           <>
-            <Link to="/signup">
+            <NavLink
+              to="/signup"
+              activeStyle={{
+                color: "white",
+              }}
+            >
               <div className="nav-item">Sign-Up</div>
-            </Link>
-            <Link to="/login">
+            </NavLink>
+            <NavLink
+              to="/login"
+              activeStyle={{
+                color: "white",
+              }}
+            >
               <div className="nav-item">Sign-In</div>
-            </Link>
+            </NavLink>
           </>
         )}
       </nav>

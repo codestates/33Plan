@@ -20,8 +20,8 @@ function MetaTestQuiz({ handleOpenMetaTest }) {
     setTestBtn(false);
     handleNextPage();
     let num = 0;
-    let timer = setInterval(() => setTimerNum(num++), 1000);
-    let minutTimer = setTimeout(() => clearInterval(timer), 2000);
+    let timer = setInterval(() => setTimerNum(num++), 2000);
+    let minutTimer = setTimeout(() => clearInterval(timer), 62000);
     return () => {
       clearTimeout(minutTimer);
     };
@@ -29,7 +29,7 @@ function MetaTestQuiz({ handleOpenMetaTest }) {
 
   //테스트 완료후 정답확인입력 컴포넌트로 이동함수
   const handleNextPage = () => {
-    setTimeout(() => setNextPage(false), 2000);
+    setTimeout(() => setNextPage(false), 63000);
   };
 
   // 60초 카운터타이머 함수
@@ -60,6 +60,7 @@ function MetaTestQuiz({ handleOpenMetaTest }) {
         <div className="modal-metatest">
           <div className="modal-metatest-container">
             <h2>★ 제시된 단어를 적지말고 기억해주세요 ★</h2>
+            <h2> 1분동안 30개가 나옵니다 </h2>
             {/* <div className="modal-metatest-container-second">
                 {second}초
               </div> */}

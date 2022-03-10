@@ -9,7 +9,9 @@ function PlanStack({
   totalSuccess,
   totalEffortCount,
   totalFailCount,
+  findData
 }) {
+  
   let day = 1;
   if (countSum > 3 && countSum <= 6) day = 2;
   else if (countSum > 6 && countSum <= 9) day = 3;
@@ -34,7 +36,8 @@ function PlanStack({
             </dl>
           </div>
         </div>
-        <div className="plan-stats-container">
+        {findData
+        ?<div className="plan-stats-container" >
           <h2>전체 기간동안 성공한 일</h2>
           <div className="plan-stats-list">
             <dl className="plan-stack-box">
@@ -51,6 +54,7 @@ function PlanStack({
             </dl>
           </div>
         </div>
+        :null}
       </div>
     </>
   );

@@ -1,41 +1,4 @@
-/* .metapage{
-    width: 100vw;
-    height: 90vh;
-    margin-bottom: 0px;
-    margin-top: 0px;
-    background-color: #eee;
-}
-  
-.metapage-test-container{
-  padding: 1em;
-  width: 100vw;
-  height: 10vh;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
 
-.metapage-test-title{
-  font-size: 3vh;
-}
-
-.metapage-test-time{
-  font-size: 40px;
-}
-
-.metapage-test-card{
-  width: 200px;
-  height: 100px;
-  background-color: white; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-
-/* .sign-form{
-  margin-top:10px;
-  margin-bottom:3px;
-} */
 
 /*! modal !*/
 .modal-metatest{
@@ -174,11 +137,11 @@ h2 {
   padding: 20px 5px;
   box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.205) ;
 }
-.modal-metatest-box{
-  /* border: 1px solid red; */
+/* .modal-metatest-box{
+  border: 1px solid red;
   width: 700px;
   justify-content: start;
-}
+} */
 .modal-metatest-content {
   /* border: 1px solid blue; */
   padding: 20px;
@@ -213,7 +176,7 @@ h2 {
   border-radius: 10px;
   background-color: whitesmoke;
   padding: 10px 20px;
-  margin-left: 10px;
+  /* margin-left: 10px; */
 }
 .metatest-input-btn:hover {
   background-color: tomato;
@@ -254,4 +217,35 @@ h2 {
   /* border: 1px solid #000; */
   padding: 0;
   text-align: center;
+}
+
+
+@media screen and (max-width: 412px) {
+  .modal-metatest-container{
+    width: 350px;
+    height: 750px;
+  }
+
+  .modal-metatest-container-card{
+    width: 300px;
+    height: 200px;
+  }
+  .modal-metatest-container-answer{
+    width: 350px;
+    height: 750px;
+  }
+  
+  .modal-metatest-title{
+    width: 300px;
+  }
+  .modal-metatest-list{
+    width: 700px;
+    height: 360px;
+    padding-left: 0;
+    overflow: auto;
+  }
+  h2{
+    font-size: 1.2em;
+  }
+
 }

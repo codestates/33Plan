@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Metatest.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 function MetaTestResult({ expactedAnswer, result, handleOpenMetaTest }) {
   // 결과 판독 멘트
@@ -22,13 +22,18 @@ function MetaTestResult({ expactedAnswer, result, handleOpenMetaTest }) {
       setError(null);
       // props를 정확하게 사용하기 위해 타입을 변경
       if (
-        expactedAnswerNum === resultNum 
+        expactedAnswerNum === resultNum ||
+        expactedAnswerNum === resultNum + 1 ||
+        expactedAnswerNum === resultNum - 1
       ) {
-        setComment("자기 자신을 잘 알고 있습니다.");
-      } else if (Number(expactedAnswer) < Number(result)) {
-        setComment("현재 과소평가 중 입니다.");
+        setComment("스스로를 잘 파악하고 계시네요. $sudo 33Plan install -g");
+      } else if (
+        expactedAnswerNum < resultNum ||
+        expactedAnswerNum < resultNum 
+      ) {
+        setComment("과감하게 도전하세요! 33Plan이 응원합니다.");
       } else {
-        setComment("현재 과대평가 중 입니다.");
+        setComment("목표를 조금만 낮추세요. 33Plan이 도와드립니다.");
       }
       setLoading(true);
     } catch (e) {
@@ -41,13 +46,13 @@ function MetaTestResult({ expactedAnswer, result, handleOpenMetaTest }) {
   };
   useEffect(() => {
     metaTestReader();
-  }, [comment]);
+  }, []);
 
   if (loading) {
     return (
       <div className="modal-metatest">
         <div className="modal-metatest-container">
-          <FontAwesomeIcon icon={faSpinner} pulse className="faspinner"/>
+          <FontAwesomeIcon icon={faSpinner} pulse className="faspinner" />
         </div>
       </div>
     );
