@@ -23,33 +23,33 @@ function PlanStack({
           <h2>{day}일 동안 성공한 일</h2>
           <div className="plan-stats-list">
             <dl className="plan-stack-box">
-              <dt>오늘 잘한 일</dt>
+              <dt>잘한 일</dt>
               <dd>{countSuccess}</dd>
             </dl>
             <dl className="plan-stack-box">
-              <dt>오늘 노력한 일</dt>
+              <dt>노력한 일</dt>
               <dd>{countEffort}</dd>
             </dl>
             <dl className="plan-stack-box">
-              <dt>오늘 못한 일</dt>
+              <dt>못한 일</dt>
               <dd>{countFail}</dd>
             </dl>
           </div>
         </div>
         {findData
         ?<div className="plan-stats-container" >
-          <h2>전체 기간동안 성공한 일</h2>
+          <h2>지금까지의 플랜 달성도</h2>
           <div className="plan-stats-list">
             <dl className="plan-stack-box">
-              <dt>오늘 잘한 일</dt>
+              <dt>잘한 일</dt>
               <dd>{totalSuccess}</dd>
             </dl>
             <dl className="plan-stack-box">
-              <dt>오늘 노력한 일</dt>
+              <dt>노력한 일</dt>
               <dd>{totalEffortCount}</dd>
             </dl>
             <dl className="plan-stack-box">
-              <dt>오늘 못한 일</dt>
+              <dt>못한 일</dt>
               <dd>{totalFailCount}</dd>
             </dl>
           </div>

@@ -6,7 +6,6 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-
 axios.defaults.withCredentials = true;
 
 function Plannerpage({ userInfo }) {
@@ -218,7 +217,11 @@ function Plannerpage({ userInfo }) {
             </form>
           ) : (
             <form>
-              <button type="submit" onClick={localStorageClear}>
+              <button
+                className="plan-reset-btn"
+                type="submit"
+                onClick={localStorageClear}
+              >
                 모두 끝났습니다^0^
               </button>
             </form>
@@ -233,7 +236,7 @@ function Plannerpage({ userInfo }) {
                     handleTodoCategory={handleTodoCategory}
                   />
                   <button
-                    className="plan-remove-btn"
+                    className="remove-btn"
                     type="button"
                     onClick={() => handleDeleteTodo(todo.id)}
                   >

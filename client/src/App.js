@@ -42,7 +42,7 @@ function App() {
         } else {
           setUserinfo(res.data.data.userInfo);
           setIsLogin(true);
-          history.push("/");
+          history.push("/");  
         }
       })
       .catch((err) => {

@@ -1,8 +1,5 @@
-
-
 /*! modal !*/
 .modal-metatest{
-  /* border: 5px solid red; */
   position: fixed;
   z-index: 999;
   left: 0;
@@ -16,7 +13,6 @@
 }
 
 .modal-metatest-container{
-  /* border: 1px solid red; */
   background-color: white;
   width: 800px;
   height: 600px;
@@ -28,15 +24,13 @@
   line-height: 30px;
   padding: 20px 5px;
   box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.205) ;
-  /* position: relative; */
 }
 h2 {
-  color: tomato;
+  color: var(--main-color);
 }
 
 .signup-page-container{
   background-color: white;
-  /* border: 1px solid #000; */
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -49,7 +43,7 @@ h2 {
 
 .modal-metatest-container-card{
   padding:0.2em;
-  background-color: tomato;
+  background-color: var(--main-color);
   color: #fff;
   margin-top: 2vh;
   margin-bottom: 5vh;
@@ -70,12 +64,12 @@ h2 {
 .modal-metatest-container-btn{
   font-size: 27px;
   font-weight: bold;
-  border: 2px solid tomato;
+  border: 2px solid var(--main-color);
   border-radius: 10px;
   margin: 10px;
   padding: 10px 20px;
   background-color: #fff;
-  color: tomato;
+  color: var(--main-color);
 }
 .modal-metatest-container-btn:hover {
   border: 2px solid #222;
@@ -120,11 +114,8 @@ h2 {
   margin-left :10px;
 }
 
-
 /* modal */
-
 .modal-metatest-container-answer {
-  /* border: 5px solid green; */
   background-color: white;
   width: 800px;
   height: 600px;
@@ -137,17 +128,15 @@ h2 {
   padding: 20px 5px;
   box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.205) ;
 }
-/* .modal-metatest-box{
-  border: 1px solid red;
+
+.modal-metatest-box{
   width: 700px;
   justify-content: start;
-} */
+}
 .modal-metatest-content {
-  /* border: 1px solid blue; */
   padding: 20px;
 }
 .modal-metatest-content span {
-  /* border: 1px solid #000; */
   display: inline-block;
   width: 50px;
   margin-left: 20px;
@@ -163,7 +152,6 @@ h2 {
   font-size: 30px;
 }
 .modal-metatest-input {
-  /* border: 1px solid red; */
   border: none;
   border-bottom: 2px solid #999;
   outline: none;
@@ -179,19 +167,8 @@ h2 {
   /* margin-left: 10px; */
 }
 .metatest-input-btn:hover {
-  background-color: tomato;
+  background-color: var(--main-color);
   color: #fff;
-  transition: 0.2s;
-}
-
-.metatest-remove-btn {
-  border: none;
-  background-color: #fff;
-  padding: 10px 20px;
-}
-
-.trash:hover {
-  color: tomato;
   transition: 0.2s;
 }
 
@@ -200,7 +177,6 @@ h2 {
 }
 
 .modal-metatest-list {
-  /* border: 1px solid #000; */
   width: 700px;
   height: 230px;
   padding-left: 0;
@@ -208,13 +184,12 @@ h2 {
 }
 .modal-metatest-title {
   padding: 10px 0;
-  background-color: tomato;
+  background-color: var(--main-color);
   color: #fff;
   border-radius: 15px;
 }
 
 .modal-metatest-item {
-  /* border: 1px solid #000; */
   padding: 0;
   text-align: center;
 }

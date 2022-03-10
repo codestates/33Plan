@@ -43,6 +43,15 @@ function MetaTestAnswer({ metaData, handleOpenMetaTest }) {
     setInputAnswer(inputAnswer.filter((answer) => answer !== el));
   };
 
+  const handleinputValue = (e) => {
+    setInputValue(e.target.value);
+  };
+  const handleMetaData = (e) => {
+    e.preventDefault();
+    setInputAnswer([...inputAnswer, inputValue]);
+    setInputValue("");
+  };
+
   return (
     <>
       {resultPage ? (
@@ -63,27 +72,16 @@ function MetaTestAnswer({ metaData, handleOpenMetaTest }) {
               </div>
             </div>
             {/* 정답입력폼 */}
-            <form className="modal-metatest-box">
+            <form className="modal-metatest-box" onSubmit={handleMetaData}>
               <h2 className="modal-metatest-title">정답입력</h2>
               <input
                 className="modal-metatest-input"
                 type="text"
                 placeholder="정답을 하나씩 입력하세요"
-                onChange={(e) => {
-                  setInputValue(e.target.value);
-                }}
-                onSubmit={(e) => e.preventDefault()}
-                // value={false ? inputValue : null}
+                value={inputValue}
+                onChange={handleinputValue}
               />
-              <button
-                className="metatest-input-btn"
-                onClick={(e) => {
-                  e.preventDefault();
-                  let newInputAnswer = [...inputAnswer];
-                  newInputAnswer.push(inputValue);
-                  setInputAnswer(newInputAnswer);
-                }}
-              >
+              <button className="metatest-input-btn" type="submit">
                 입력
               </button>
             </form>
@@ -93,7 +91,7 @@ function MetaTestAnswer({ metaData, handleOpenMetaTest }) {
                   <li key={idx} className="modal-metatest-item">
                     {el}
                     <button
-                      className="metatest-remove-btn"
+                      className="remove-btn"
                       key={idx}
                       onClick={() => handleDeleteTodo(el)}
                     >
