@@ -12,6 +12,10 @@
 
 플래너 작성을 통해 내가 할 수 있는 일과 그렇지 않은 일을 인지하고 행동할 수 있도록 도울 것입니다.
 
+## 📘 Logo
+
+![image](https://user-images.githubusercontent.com/89354370/157713511-ed559862-cd56-4431-982a-1684b291b070.png)
+
 ## 📘 Feature
 
 ### 1. 메타인지 테스트 기능
@@ -29,6 +33,14 @@
 
 
 ## 📘 Team : wooga
+
+### Team Logo
+<img src="https://user-images.githubusercontent.com/89354370/157712725-98e40ff7-e3fb-4a9b-8e70-54a93dea751d.png" alt="가로" height=150px width=570px />
+
+<img src="https://user-images.githubusercontent.com/89354370/157712735-80195574-f436-43fa-8f02-09d0c668928b.png" alt="세로" height=280px width=230px />
+
+
+### Team Member
 |Name|Position|GIthub|
 |:---:|:---:|:---:|
 |김현규|Back-end|[SsankQ](https://github.com/SsankQ)|
