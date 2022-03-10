@@ -46,7 +46,7 @@ module.exports = {
             .status(200)
             .cookie("accessToken", accessToken, {
               sameSite: "none",
-              domain: "localhost",
+              domain: "33plan.ga",
               path: "/",
               secure: true,
               httpOnly: true,
