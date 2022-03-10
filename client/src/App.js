@@ -67,8 +67,13 @@ function App() {
     }).then((res) => {
       setUserinfo(null);
       setIsLogin(false);
-      history.push('/');
+      // history.push('/');
     });
+  };
+
+  // 회원정보 업데이트 후 로그아웃 
+  const handleResponseUpdate = () => {
+    handleLogout();
   };
 
   return (
@@ -86,7 +91,7 @@ function App() {
           </Route>
           {/* 유저정보 */}
           <Route path="/mypage">
-            <Mypage userInfo={userInfo} setIsLogin={setIsLogin} />
+            <Mypage userInfo={userInfo} handleResponseUpdate={handleResponseUpdate}/>
           </Route>
           {/* 로그인페이지 */}
           <Route path="/login">

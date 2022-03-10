@@ -59,7 +59,7 @@ function MetaTestQuiz({ handleOpenMetaTest }) {
       {nextPage ? (
         <div className="modal-metatest">
           <div className="modal-metatest-container">
-            <p>제시된 단어를 적지말고 기억해주세요</p>
+            <h2>★ 제시된 단어를 적지말고 기억해주세요 ★</h2>
             {/* <div className="modal-metatest-container-second">
                 {second}초
               </div> */}
@@ -76,16 +76,17 @@ function MetaTestQuiz({ handleOpenMetaTest }) {
               >
                 딱 한번만 누르세요
               </button>
-            ) : null}
-            <Link to="/">
-              <button
-                className="modal-metatest-container-btn"
-                type="button"
-                onClick={handleOpenMetaTest}
-              >
-                닫기
-              </button>
-            </Link>
+            ) : (
+              <Link to="/">
+                <button
+                  className="modal-metatest-container-btn"
+                  type="button"
+                  onClick={handleOpenMetaTest}
+                >
+                  중지하고 닫기
+                </button>
+              </Link>
+            )}
           </div>
         </div>
       ) : (

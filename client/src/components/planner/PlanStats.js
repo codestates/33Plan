@@ -1,7 +1,15 @@
 import React from "react";
 import "./PlanStack.css";
 
-function PlanStack({ countSuccess, countEffort, countFail, countSum }) {
+function PlanStack({
+  countSuccess,
+  countEffort,
+  countFail,
+  countSum,
+  totalSuccess,
+  totalEffortCount,
+  totalFailCount,
+}) {
   let day = 1;
   if (countSum > 3 && countSum <= 6) day = 2;
   else if (countSum > 6 && countSum <= 9) day = 3;
@@ -30,15 +38,15 @@ function PlanStack({ countSuccess, countEffort, countFail, countSum }) {
         <div className="plan-stats-list">
           <dl className="plan-stack-box">
             <dt>오늘 잘한 일</dt>
-            <dd>{countSuccess}</dd>
+            <dd>{totalSuccess}</dd>
           </dl>
           <dl className="plan-stack-box">
             <dt>오늘 노력한 일</dt>
-            <dd>{countEffort}</dd>
+            <dd>{totalEffortCount}</dd>
           </dl>
           <dl className="plan-stack-box">
             <dt>오늘 못한 일</dt>
-            <dd>{countFail}</dd>
+            <dd>{totalFailCount}</dd>
           </dl>
         </div>
       </div>
