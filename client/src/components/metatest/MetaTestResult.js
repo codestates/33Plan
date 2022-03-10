@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Metatest.css";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+
 function MetaTestResult({ expactedAnswer, result, handleOpenMetaTest }) {
   // 결과 판독 멘트
   const [comment, setComment] = useState("");
@@ -44,10 +47,7 @@ function MetaTestResult({ expactedAnswer, result, handleOpenMetaTest }) {
     return (
       <div className="modal-metatest">
         <div className="modal-metatest-container">
-          <img
-            alt="결과 확인 중"
-            src="https://user-images.githubusercontent.com/89363048/157176840-2fdb9e8e-2ca5-48af-8ed6-5c4d1a4c1c32.gif"
-          />
+          <FontAwesomeIcon icon={faSpinner} pulse className="faspinner"/>
         </div>
       </div>
     );
@@ -59,14 +59,20 @@ function MetaTestResult({ expactedAnswer, result, handleOpenMetaTest }) {
     <>
       <div className="modal-metatest">
         <div className="modal-metatest-container">
-          <h2>자신이 예상스코어</h2>
-          <div>{expactedAnswer}개</div>
-          <h2>실제 정답스코어</h2>
-          <div>{result}개</div>
-          <h2>결과</h2>
-          <h2>{comment}</h2>
+          <dl className="modal-metatest-content score">
+            <dt>자신이 예상스코어</dt>
+            <dd>{expactedAnswer}개</dd>
+          </dl>
+          <dl className="modal-metatest-content score">
+            <dt>실제 정답스코어</dt>
+            <dd>{result}개</dd>
+          </dl>
+          {/* <h2>결과</h2> */}
+          <h2 className="modal-metatest-content comment">{comment}</h2>
           <div>
-            <button onClick={handleOpenMetaTest}>닫기</button>
+            <button className="metatest-input-btn" onClick={handleOpenMetaTest}>
+              닫기
+            </button>
           </div>
         </div>
       </div>

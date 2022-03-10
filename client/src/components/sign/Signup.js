@@ -100,9 +100,8 @@ function Signup() {
           }
         })
         .catch((err) => {
-          setErrorMessage("이미 사용중인 이메일주소 혹은 닉네임이 존재합니다.")
-          });
-        ;
+          setErrorMessage("이미 사용중인 이메일주소 혹은 닉네임이 존재합니다.");
+        });
     }
   };
 
@@ -116,39 +115,50 @@ function Signup() {
     <div className="mainpage">
       <center className="mypage-container">
         <h1>Sign Up</h1>
-        <div>모든 항목은 필수입니다</div>
-        <form className="sign-form" onSubmit={(e) => e.preventDefault()}>
-          <div className="sign-form">
-            <span>이메일</span>
-            <input type="text" onChange={handleInputValue("email")} />
-          </div>
-          <div className="sign-form">{errorEmail}</div>
-          <div className="sign-form">
-            <span>비밀번호</span>
+        <h4>모든 항목은 필수입니다</h4>
+        <form className="mypage-form" onSubmit={(e) => e.preventDefault()}>
+          <dl className="mypage-form-item">
+            <dt className="mypage-sub-title">이메일</dt>
+            <input
+              type="text"
+              className="mypage-content"
+              onChange={handleInputValue("email")}
+            />
+          </dl>
+          <dl className="mypage-form-item">
+            <dt className="mypage-sub-title">비밀번호</dt>
             <input
               type="password"
+              className="mypage-content"
               onChange={handleInputValue("password")}
-              placeholder="비밀번호를 문자,숫자,특수문자를 포함한 8자리 이상이여야 합니다."
             />
-          </div>
-          <div className="sign-form">
-            <span>비밀번호 확인</span>
-            <input type="password" onChange={handleInputValue("rePassword")} />
-          </div>
-          <div className="sign-form">{errorPassword}</div>
-          <div className="sign-form">{errorRePassword}</div>
-          <div className="sign-form">
-            <span>닉네임</span>
-            <input type="text" onChange={handleInputValue("nickname")} />
-          </div>
-          <div className="sign-form">
-            {" "}
-            <span>전화번호</span>{" "}
-            <input type="tel" onChange={handleInputValue("phone")} />
-          </div>
-          <div className="sign-form">{errorPhone}</div>
+          </dl>
+          <dl className="mypage-form-item">
+            <dt className="mypage-sub-title">비밀번호 확인</dt>
+            <input
+              type="password"
+              className="mypage-content"
+              onChange={handleInputValue("rePassword")}
+            />
+          </dl>
+          <dl className="mypage-form-item">
+          <dt className="mypage-sub-title">닉네임</dt>
+          <input
+              type="password"
+              className="mypage-content"
+              onChange={handleInputValue("nickname")}
+            />
+          </dl>
+          <dl className="mypage-form-item">
+          <dt className="mypage-sub-title">전화번호</dt>
+          <input
+              type="password"
+              className="mypage-content"
+              onChange={handleInputValue("nickname")}
+            />
+          </dl>
           <button
-            className="btn btn-signup"
+            className="sign-btn magin"
             type="submit"
             onClick={handleSignup}
           >
@@ -156,10 +166,16 @@ function Signup() {
           </button>
           <br />
           <br />
-          <button className="sign-form" onClick={handleGoback}>
+          <button className="sign-btn magin" onClick={handleGoback}>
             뒤로가기
           </button>
-          <div className="sign-form">{errorMessage}</div>
+          <div className="error-content">
+            <h3>{errorMessage}</h3>
+            <h3>{errorEmail}</h3>
+            <h3>{errorPassword}</h3>
+            <h3>{errorRePassword}</h3>
+            <h3>{errorPhone}</h3>
+          </div>
         </form>
       </center>
     </div>

@@ -17,13 +17,13 @@ function Mainpage() {
           우리는 얼마나 자신에 대해 잘 알고 있을까요?
         </h2>
         <div className="mainpage-container">
-          <>
+          <div className="mainpage-container-img">
             <img
               className="mainpage-img"
               alt="이미지 넣고 싶습니다."
               src="https://user-images.githubusercontent.com/89363048/157147822-b8886302-2f83-4833-a57e-15d5a9e68f7f.gif"
             />
-          </>
+          </div>
           <div className="mainpage-content">
             간단한 테스트를 통해 나의 메타인지 능력은 어느 정도인지 측정해보세요<br/> 
             하루에 3가지만 계획하시면 됩니다!<br/> 
@@ -32,7 +32,7 @@ function Mainpage() {
           </div>
           <div className="mainpage-test">
             <button className="mainpage-test-btn" onClick={handleOpenMetaTest}>
-              테스트하기
+              테스트 시작
             </button>
             {isMetaTest ? (
               <MetaTestQuiz handleOpenMetaTest={handleOpenMetaTest} />

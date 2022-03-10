@@ -3,6 +3,9 @@ import PlanStack from "../components/planner/PlanStats";
 import CategoryBtn from "../components/planner/CategoryBtn";
 import axios from "axios";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
 axios.defaults.withCredentials = true;
 
 function Plannerpage({ userInfo }) {
@@ -177,7 +180,7 @@ function Plannerpage({ userInfo }) {
 
   if (!planUserInfo.email) {
     return (
-      <div className="planner">
+      <div className="planner planner-logout">
         <div className="plan-container">
           <h1>로그인이 필요한 페이지 입니다.</h1>
         </div>
@@ -201,7 +204,7 @@ function Plannerpage({ userInfo }) {
                 onChange={handleInputChange}
               />
               <button className="plan-list-btn" type="submit">
-                작성 완료
+                작성완료
               </button>
             </form>
           ) : (
@@ -225,7 +228,7 @@ function Plannerpage({ userInfo }) {
                     type="button"
                     onClick={() => handleDeleteTodo(todo.id)}
                   >
-                    <i className="fa-solid fa-trash"></i>
+                    <FontAwesomeIcon icon={faTrash} className="trash" />
                   </button>
                 </span>
               </li>

@@ -83,7 +83,7 @@ function MetaTestQuiz({ handleOpenMetaTest }) {
                   type="button"
                   onClick={handleOpenMetaTest}
                 >
-                  중지하고 닫기
+                  닫기
                 </button>
               </Link>
             )}
