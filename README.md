@@ -48,3 +48,9 @@
 |정다인|Front-end|[jeongdxxn](https://github.com/jeongdxxn)|
 |서외구|Front-end|[sud665](https://github.com/sud665)|
 
+## Contact Us
+
+🦍 **[33Plan 사용하기](https://33plan.ga)**
+
+🦍 **[33Plan Wiki](https://github.com/codestates/33Plan/wiki)**
+
