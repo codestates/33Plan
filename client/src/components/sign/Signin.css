@@ -44,3 +44,29 @@
     box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.205) ;
     position: relative;
   }
+
+
+  .sign-btn {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    padding: 15px 25px;
+    cursor: pointer;
+  }
+  
+  .sign-btn:hover {
+    background-color: #222;
+    color: #fff;
+    transition: 0.5s;
+  }
+
+  .margin{
+    margin-top: 30px;
+  }
+
+  .error-content{
+    width: 300px;
+    margin:50px;
+  }

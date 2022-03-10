@@ -11,7 +11,7 @@ function Signin({ handleResponseSuccess }) {
     email: "",
     password: "",
   });
-  // 에러메세지
+  // 에러메세지 관리
   const [errorMessage, setErrorMessage] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
@@ -51,7 +51,7 @@ function Signin({ handleResponseSuccess }) {
       setErrorMessage("이메일과 비밀번호를 입력하세요");
       // 이메일 유효성 검사
     } else if (!validateFuntion.Email(email)) {
-      setErrorEmail("이메일 형식과 맞지 않습니다.");
+      setErrorEmail("이메일 형식에 맞지 않습니다.");
       // 비밀번호 유효성 검사
     } else if (!validateFuntion.PW(password)) {
       setErrorPassword(
@@ -81,34 +81,46 @@ function Signin({ handleResponseSuccess }) {
 
   return (
     <div className="mainpage">
-      <center className="mypage-container">
+      <div className="mypage-container">
         <h1>Sign In</h1>
-        <form onSubmit={(e) => e.preventDefault()}>
-          <div className="sign-form">
-            <span>이메일</span>
-            <input type="text" onChange={handleInputValue("email")} />
-            <div className="sign-form">{errorEmail}</div>
-          </div>
-          <div className="sign-form">
-            <span>비밀번호</span>
-            <input type="password" onChange={handleInputValue("password")} />
-            <div className="sign-form">{errorPassword}</div>
-          </div>
+        <form className="mypage-form" onSubmit={(e) => e.preventDefault()}>
+          <dl className="mypage-form-item">
+            <dt className="mypage-sub-title">이메일</dt>
+            <input
+              type="text"
+              className="mypage-content"
+              onChange={handleInputValue("email")}
+            />
+          </dl>
+          <dl className="mypage-form-item">
+            <dt className="mypage-sub-title">비밀번호</dt>
+            <input
+              type="password"
+              className="mypage-content"
+              onChange={handleInputValue("password")}
+            />
+          </dl>
           <Link to="/signup">
             <div className="sign-form">
               <div>회원가입</div>
             </div>
           </Link>
-          <button className="sign-form" type="submit" onClick={handleLogin}>
+          <button className="sign-btn magin" type="submit" onClick={handleLogin}>
             로그인
           </button>
-          <br />
-          <Link to="/">
-            <button className="sign-form">닫기</button>
-          </Link>
-          <div className="sign-form">{errorMessage}</div>
+          <div className="margin">
+            <Link to="/">
+              <button className="sign-btn">닫기</button>
+            </Link>
+          </div>
+          <div className="error-content">
+            <h3>{errorMessage}</h3>
+            <h3>{errorEmail}</h3>
+            <h3>{errorPassword}</h3>
+          </div>
         </form>
-      </center>
+        
+      </div>
     </div>
   );
 }
