@@ -1,4 +1,4 @@
-/*! modal !*/
+
 .modal-metatest{
   position: fixed;
   z-index: 999;
@@ -199,7 +199,7 @@ h2 {
 @media screen and (max-width: 412px) {
   .modal-metatest-container{
     width: 350px;
-    height: 750px;
+    height: 700px;
   }
 
   .modal-metatest-container-card{

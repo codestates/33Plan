@@ -362,7 +362,7 @@ font-style: normal;
     height: 800px;
   }
   .mainpage-title {
-    font-size: 20px;
+    font-size: 18px;
     margin-left: 5px;
     margin-right: 5px
   }
@@ -419,5 +419,8 @@ font-style: normal;
   }
   .card-font{
     margin-top: 10vh;
+  }
+  .mainpage-content{
+    font-size:12px;
   }
 }

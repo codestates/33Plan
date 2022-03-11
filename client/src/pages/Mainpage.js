@@ -22,7 +22,7 @@ function Mainpage() {
             />
           </div>
           <h2 className="mainpage-title">
-            우리는 자신에 대해 얼마나 잘 알고 있을까요?
+            우리는 자신에 대해 <br/>얼마나 잘 알고 있을까요?
           </h2>
           <p className="mainpage-content">
             간단한 테스트를 통해 나의 메타인지 능력은 어느 정도인지 측정해보세요<br/> 
