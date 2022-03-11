@@ -26,11 +26,12 @@ module.exports = {
             message: "No matching user information",
           });
         } else {
-          const { id, nickname, email, createdAt, updatedAt } = userData;
+          const { id, nickname, email, phone, createdAt, updatedAt } = userData;
           const userInfo = {
             id,
             nickname,
             email,
+            phone,
             createdAt,
             updatedAt,
           };

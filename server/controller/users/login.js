@@ -45,11 +45,14 @@ module.exports = {
           res
             .status(200)
             .cookie("accessToken", accessToken, {
-              httpOnly: true,
-              secure: true,
               sameSite: "none",
+              domain: "33plan.ga",
+              path: "/",
+              secure: true,
+              httpOnly: true,
+              maxAge: 1000 * 60 * 60 * 2
             })
-            .send({ message: "Successfully Logged In" });
+            .json({ message: "Successfully Logged In" });
         }
       } catch (error) {
         console.error(error);

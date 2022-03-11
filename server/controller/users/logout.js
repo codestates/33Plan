@@ -1,10 +1,18 @@
 module.exports = {
   post: async (req, res) => {
-    res
-      .status(205)
-      .cookie("accessToken", "", {
-        maxAge: 0,
-      })
-      .send({ message: "Successfully Logged Out" });
+    try {
+      res
+        .status(205)
+        .clearCookie("accessToken", {
+          sameSite: 'none',
+          domain: "33plan.ga",
+          path: '/',
+          secure: true,
+          httpOnly: true
+        })
+        .json({ message: "Successfully Logged Out" });
+    } catch (error) {
+      console.error(error);
+    }
   },
 };

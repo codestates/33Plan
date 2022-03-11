@@ -12,13 +12,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      plan1: {
-        type: Sequelize.STRING,
-      },
-      plan2: {
-        type: Sequelize.STRING,
-      },
-      plan3: {
+      plan: {
         type: Sequelize.STRING,
       },
       createdAt: {

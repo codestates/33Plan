@@ -3,9 +3,9 @@ const { plans } = require("../../models");
 
 module.exports = {
   post: async (req, res) => {
-    const { plan1, plan2, plan3 } = req.body;
+    const { plan } = req.body;
 
-    if (!plan1 || !plan2 || !plan3) {
+    if (!plan) {
       res.status(400).send("plan이 입력되지 않았습니다");
     } else {
       try {
@@ -13,15 +13,18 @@ module.exports = {
 
         const planData = await plans.create({
           user_id: userId,
-          plan1,
-          plan2,
-          plan3,
+          plan
         });
 
-        console.log(planData);
-
+        res.status(201).json({
+          message: "Successfully Saved",
+          data: planData.dataValues 
+        })
       } catch (err) {
         console.log(err);
+        res.status(400).json({
+          message: "please fill textbox"
+        })
       }
     }
   },

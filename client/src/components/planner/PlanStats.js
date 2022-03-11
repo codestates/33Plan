@@ -1,54 +1,61 @@
 import React from "react";
 import "./PlanStack.css";
 
-function PlanStack() {
-  return (
-    <div className="plan-stats-container">
-      <div className="planstats-title">Stats Zone</div>
-      <div className="plan-stack">
-        <div className="plan-stack-box">
-          <div className="plan-stack-title">잘한 일</div>
-          <div className="plan-stack-block">
-            <div className="block"></div>
-            <div className="block"></div>
-            <div className="block"></div>
-          </div>
-        </div>
-        <div className="plan-stack-box">
-          <div className="plan-stack-title">노력한 일</div>
-          <div className="plan-stack-block">
-            <div className="block"></div>
-            <div className="block"></div>
-          </div>
-        </div>
-        <div className="plan-stack-box">
-          <div className="plan-stack-title">못한 일</div>
-          <div className="plan-stack-block">
-            <div className="block"></div>
-          </div>
-        </div>
-      </div>
+function PlanStack({
+  countSuccess,
+  countEffort,
+  countFail,
+  countSum,
+  totalSuccess,
+  totalEffortCount,
+  totalFailCount,
+  findData,
+}) {
+  let day = 1;
+  if (countSum > 3 && countSum <= 6) day = 2;
+  else if (countSum > 6 && countSum <= 9) day = 3;
 
-      <div className="plan-graph">
-        <div className="graph-bar">
-          <div className="bar green">
-            <div className="desc">
-              <span className="stats">잘한 일 3개</span>
-            </div>
-          </div>
-          <div className="bar yellow">
-            <div className="desc">
-              <span className="stats">노력한 일 2개</span>
-            </div>
-          </div>
-          <div className="bar gray">
-            <div className="desc">
-              <span className="stats">못한 일 2개</span>
-            </div>
+  return (
+    <>
+      <div className="plan-stats">
+        <div className="plan-stats-container">
+          <h2>{day}일 동안 성공한 일</h2>
+          <div className="plan-stats-list">
+            <dl className="plan-stack-box">
+              <dt>잘한 일</dt>
+              <dd>{countSuccess}</dd>
+            </dl>
+            <dl className="plan-stack-box">
+              <dt>노력한 일</dt>
+              <dd>{countEffort}</dd>
+            </dl>
+            <dl className="plan-stack-box">
+              <dt>못한 일</dt>
+              <dd>{countFail}</dd>
+            </dl>
           </div>
         </div>
+        {findData ? (
+          <div className="plan-stats-container">
+            <h2>지금까지의 플랜 달성도</h2>
+            <div className="plan-stats-list">
+              <dl className="plan-stack-box">
+                <dt>잘한 일</dt>
+                <dd>{totalSuccess}</dd>
+              </dl>
+              <dl className="plan-stack-box">
+                <dt>노력한 일</dt>
+                <dd>{totalEffortCount}</dd>
+              </dl>
+              <dl className="plan-stack-box">
+                <dt>못한 일</dt>
+                <dd>{totalFailCount}</dd>
+              </dl>
+            </div>
+          </div>
+        ) : null}
       </div>
-    </div>
+    </>
   );
 }
 

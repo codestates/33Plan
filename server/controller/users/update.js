@@ -35,16 +35,13 @@ module.exports = {
             });
           }
         }
-        const checkNickname = await users.findOne({
-          where: {
-            nickname,
-          },
-        });
 
-        if (checkNickname) {
+        const checkNickname = await users.findByPk(decoded.id);
+
+        if (checkNickname.nickname === nickname) {
           return res.status(409).json({
             data: null,
-            message: "email already exists",
+            message: "nickname already exists",
           });
         }
 
