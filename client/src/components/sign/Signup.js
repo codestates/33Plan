@@ -68,26 +68,51 @@ function Signup() {
     // isValid();
   };
 
+  // 에러메세지 핸들러 함수
+  // const handle = () => {
+  //   ErrorEmail
+  // }
+
   const handleSignup = async () => {
     const { email, password, nickname, phone, rePassword } = userInfo;
     // 모든항목 입력 확인
 
     if (!email || !password || !nickname || !phone || !rePassword) {
       setErrorMessage("모든 항목은 필수입니다");
+      let minutTimer = setTimeout(() => setErrorMessage(""), 2000);
+      return () => {
+        clearTimeout(minutTimer);
+      };
       // 이메일 유효성 검사
     } else if (!validateFuntion.Email(email)) {
       setErrorEmail("이메일 형식과 맞지 않습니다.");
+      let minutTimer = setTimeout(() => setErrorEmail(""), 2000);
+      return () => {
+        clearTimeout(minutTimer);
+      };
       // 비밀번호 유효성 검사
     } else if (!validateFuntion.PW(password)) {
       setErrorPassword(
-        "비밀번호를 문자,숫자,특수문자를 포함한 8자리 이상이여야 합니다."
+        "비밀번호는 문자,숫자,특수문자를 포함한 8자리 이상이여야 합니다."
       );
+      let minutTimer = setTimeout(() => setErrorPassword(""), 2000);
+      return () => {
+        clearTimeout(minutTimer);
+      };
       // 휴대폰 유효성 검사
     } else if (!validateFuntion.Phone(phone)) {
       setErrorPhone("유효하지 않는 핸드폰번호 입니다.");
+      let minutTimer = setTimeout(() => setErrorPhone(""), 2000);
+      return () => {
+        clearTimeout(minutTimer);
+      };
       // 비밀번호 더블체크
     } else if (!validateFuntion.DoubleCheck(password, rePassword)) {
       setErrorRePassword("비밀번호가 일치 하지 않습니다.");
+      let minutTimer = setTimeout(() => setErrorRePassword(""), 2000);
+      return () => {
+        clearTimeout(minutTimer);
+      };
     } else {
       axios
         .post(`${process.env.REACT_APP_API_URL}/users/signup`, userInfo, {
@@ -112,7 +137,7 @@ function Signup() {
     return history.push("/");
   };
   return (
-    <div className="mainpage">
+    <div className="mainpage signup">
       <center className="mypage-container">
         <h1>Sign Up</h1>
         <h4>모든 항목은 필수입니다</h4>
@@ -125,6 +150,7 @@ function Signup() {
               onChange={handleInputValue("email")}
             />
           </dl>
+          <dl className="mypage-form-error">{errorEmail}</dl>
           <dl className="mypage-form-item">
             <dt className="mypage-sub-title">비밀번호</dt>
             <input
@@ -141,22 +167,27 @@ function Signup() {
               onChange={handleInputValue("rePassword")}
             />
           </dl>
+          <dl className="mypage-form-error">
+            {errorPassword || errorRePassword}
+          </dl>
+
           <dl className="mypage-form-item">
-          <dt className="mypage-sub-title">닉네임</dt>
-          <input
-              type="password"
+            <dt className="mypage-sub-title">닉네임</dt>
+            <input
+              type="text"
               className="mypage-content"
               onChange={handleInputValue("nickname")}
             />
           </dl>
           <dl className="mypage-form-item">
-          <dt className="mypage-sub-title">전화번호</dt>
-          <input
-              type="password"
+            <dt className="mypage-sub-title">전화번호</dt>
+            <input
+              type="tel"
               className="mypage-content"
-              onChange={handleInputValue("nickname")}
+              onChange={handleInputValue("phone")}
             />
           </dl>
+          <dl className="mypage-form-error">{errorPhone}</dl>
           <button
             className="sign-btn magin"
             type="submit"
@@ -171,10 +202,10 @@ function Signup() {
           </button>
           <div className="error-content">
             <h3>{errorMessage}</h3>
-            <h3>{errorEmail}</h3>
+            {/* <h3>{errorEmail}</h3>
             <h3>{errorPassword}</h3>
             <h3>{errorRePassword}</h3>
-            <h3>{errorPhone}</h3>
+            <h3>{errorPhone}</h3> */}
           </div>
         </form>
       </center>

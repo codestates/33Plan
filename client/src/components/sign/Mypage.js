@@ -25,7 +25,7 @@ function Mypage({ userInfo, handleResponseUpdate }) {
   const handleInputValue = (key) => (e) => {
     setUpdateInfo({ ...updateInfo, [key]: e.target.value });
   };
-  
+
   // 유효성 검사
   const validateFuntion = {
     PW: (password) => {
@@ -50,34 +50,53 @@ function Mypage({ userInfo, handleResponseUpdate }) {
 
       return regPhone.test(phone_number);
     },
-  }; 
-
+    DoubleCheck: (password, rePassword) => {
+      if (String(password) !== String(rePassword)) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+  };
 
   // 서버에 pacth요청
   const handleUpdate = () => {
-    const {password, nickname, phone, rePassword} = updateInfo
+    const { password, nickname, phone, rePassword } = updateInfo;
     if (!password || !nickname || !phone || !rePassword) {
       setErrorMessage("모든항목을 입력해주세요.");
+      let minutTimer = setTimeout(() => setErrorMessage(""), 2000);
+      return () => {
+        clearTimeout(minutTimer);
+      };
     } else if (!validateFuntion.PW(password)) {
       setErrorPassword(
         "비밀번호를 문자,숫자,특수문자를 포함한 8자리 이상이여야 합니다."
       );
+      let minutTimer = setTimeout(() => setErrorPassword(""), 2000);
+      return () => {
+        clearTimeout(minutTimer);
+      };
       // 휴대폰 유효성 검사
-    } else if (!validateFuntion.Phone(phone)) {
-      setErrorPhone("유효하지 않는 핸드폰번호 입니다.");
-      // 비밀번호 더블체크
     } else if (!validateFuntion.DoubleCheck(rePassword, password)) {
       setErrorRePassword("비밀번호가 일치 하지 않습니다.");
+      let minutTimer = setTimeout(() => setErrorRePassword(""), 2000);
+      return () => {
+        clearTimeout(minutTimer);
+      };
+    } else if (!validateFuntion.Phone(phone)) {
+      setErrorPhone("유효하지 않는 핸드폰번호 입니다.");
+      let minutTimer = setTimeout(() => setErrorPhone(""), 2000);
+      return () => {
+        clearTimeout(minutTimer);
+        // 비밀번호 더블체크
+      };
     } else {
-       axios
-        .patch(
-          `${process.env.REACT_APP_API_URL}/users/update`,
-          {
-            password: updateInfo.password,
-            nickname: updateInfo.nickname,
-            phone: updateInfo.phone,
-          },
-        )
+      axios
+        .patch(`${process.env.REACT_APP_API_URL}/users/update`, {
+          password: updateInfo.password,
+          nickname: updateInfo.nickname,
+          phone: updateInfo.phone,
+        })
         .then((res) => {
           if (res.data.message === "ok") {
             handleResponseUpdate();
@@ -85,8 +104,8 @@ function Mypage({ userInfo, handleResponseUpdate }) {
           }
         })
         .catch((err) => {
-          setErrorMessage('이미 사용중인 닉네임 혹은 휴대폰번호가 존재합니다.')
-        })
+          setErrorMessage("이미 사용중인 닉네임 혹은 휴대폰번호가 존재합니다.");
+        });
     }
   };
   // 로그인안하고 강제로 mypage로 접속시 막음
@@ -103,7 +122,7 @@ function Mypage({ userInfo, handleResponseUpdate }) {
   }
   return (
     <div className="mainpage">
-      <div className="mypage-container">
+      <center className="mypage-container">
         <h1>Mypage</h1>
         <form className="mypage-form" onSubmit={(e) => e.preventDefault()}>
           <dl className="mypage-form-item">
@@ -119,6 +138,7 @@ function Mypage({ userInfo, handleResponseUpdate }) {
               onChange={handleInputValue("password")}
             ></input>
           </dl>
+          <dl className="mypage-form-error">{errorPassword}</dl>
           <dl className="mypage-form-item">
             <dt className="mypage-sub-title">비밀번호 확인</dt>
             <input
@@ -128,8 +148,7 @@ function Mypage({ userInfo, handleResponseUpdate }) {
               onChange={handleInputValue("rePassword")}
             ></input>
           </dl>
-          <dd className="mypage-content">{errorRePassword}</dd>
-          <dd className="mypage-content">{errorPassword}</dd>
+          <dl className="mypage-form-error">{errorRePassword}</dl>
           <dl className="mypage-form-item">
             <dt className="mypage-sub-title">닉네임</dt>
             <input
@@ -149,22 +168,18 @@ function Mypage({ userInfo, handleResponseUpdate }) {
               // value={mypageUserinfo.nickname}
               onChange={handleInputValue("phone")}
             ></input>
-            
           </dl>
-          <dl className="mypage-form-item">
-            <dd className="mypage-content">{errorPhone}</dd>
-          </dl>
-            <button
-              className="mypage-close-btn"
-              type="submit"
-              onClick={handleUpdate}
-            >
-              수정요청
-            </button>
+          <dl className="mypage-form-error">{errorPhone}</dl>
+          <button
+            className="mypage-close-btn"
+            type="submit"
+            onClick={handleUpdate}
+          >
+            수정요청
+          </button>
         </form>
         <h3>{errorMessage}</h3>
-        
-      </div>
+      </center>
     </div>
   );
 }

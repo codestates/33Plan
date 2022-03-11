@@ -60,6 +60,7 @@ function MetaTestQuiz({ handleOpenMetaTest }) {
         <div className="modal-metatest">
           <div className="modal-metatest-container">
             <h2>★ 제시된 단어를 적지말고 기억해주세요 ★</h2>
+            <h2> 1분동안 30개가 나옵니다 </h2>
             {/* <div className="modal-metatest-container-second">
                 {second}초
               </div> */}

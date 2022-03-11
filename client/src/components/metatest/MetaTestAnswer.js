@@ -7,7 +7,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function MetaTestAnswer({ metaData, handleOpenMetaTest }) {
   /* TODO : 정답을 확인하는 창*/
-  console.log(metaData);
+  // console.log(metaData);
   const [resultPage, setResultPage] = useState(true);
 
   //유저가 입력하는 예상결과값
@@ -15,7 +15,7 @@ function MetaTestAnswer({ metaData, handleOpenMetaTest }) {
 
   //유저가 입력하는 정답값
   const [inputAnswer, setInputAnswer] = useState([]);
-  console.log("입력되는 정답값", inputAnswer);
+  // console.log("입력되는 정답값", inputAnswer);
 
   //입력창에 정답입력값
   const [inputValue, setInputValue] = useState("");
@@ -40,8 +40,16 @@ function MetaTestAnswer({ metaData, handleOpenMetaTest }) {
 
   // 정답 삭제 기능
   const handleDeleteTodo = (el) => {
-    console.log("값이 전달아뇓", el);
     setInputAnswer(inputAnswer.filter((answer) => answer !== el));
+  };
+
+  const handleinputValue = (e) => {
+    setInputValue(e.target.value);
+  };
+  const handleMetaData = (e) => {
+    e.preventDefault();
+    setInputAnswer([...inputAnswer, inputValue]);
+    setInputValue("");
   };
 
   return (
@@ -64,37 +72,26 @@ function MetaTestAnswer({ metaData, handleOpenMetaTest }) {
               </div>
             </div>
             {/* 정답입력폼 */}
-            <form className="modal-metatest-box">
+            <form className="modal-metatest-box" onSubmit={handleMetaData}>
               <h2 className="modal-metatest-title">정답입력</h2>
               <input
                 className="modal-metatest-input"
                 type="text"
                 placeholder="정답을 하나씩 입력하세요"
-                onChange={(e) => {
-                  setInputValue(e.target.value);
-                }}
-                onSubmit={(e) => e.preventDefault()}
-                // value={false ? inputValue : null}
+                value={inputValue}
+                onChange={handleinputValue}
               />
-              <button
-                className="metatest-input-btn"
-                onClick={(e) => {
-                  e.preventDefault();
-                  let newInputAnswer = [...inputAnswer];
-                  newInputAnswer.push(inputValue);
-                  setInputAnswer(newInputAnswer);
-                }}
-              >
+              <button className="metatest-input-btn" type="submit">
                 입력
               </button>
             </form>
             <ul className="modal-metatest-list">
               {inputAnswer.map((el, idx) => {
                 return (
-                  <li className="modal-metatest-item">
+                  <li key={idx} className="modal-metatest-item">
                     {el}
                     <button
-                      className="metatest-remove-btn"
+                      className="remove-btn"
                       key={idx}
                       onClick={() => handleDeleteTodo(el)}
                     >

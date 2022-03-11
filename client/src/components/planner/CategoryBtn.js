@@ -7,21 +7,21 @@ function CategoryBtn({ todoId, handleTodoCategory }) {
         className="plan-items-btn"
         title="오늘 잘한 일"
         name={todoId}
-        onClick={() => handleTodoCategory( todoId, "success")}
+        onClick={() => handleTodoCategory(todoId, "success")}
       >
         success
       </button>
       <button
         className="plan-items-btn"
         title="오늘 노력한 일"
-        onClick={() => handleTodoCategory( todoId , "effort")}
+        onClick={() => handleTodoCategory(todoId, "effort")}
       >
         effort
       </button>
       <button
         className="plan-items-btn"
         title="오늘 못한 일"
-        onClick={() => handleTodoCategory( todoId , "fail")}
+        onClick={() => handleTodoCategory(todoId, "fail")}
       >
         fail
       </button>
