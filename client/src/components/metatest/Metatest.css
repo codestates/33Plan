@@ -121,7 +121,7 @@ h2 {
   height: 600px;
   border-radius: 30px;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   line-height: 30px;
@@ -131,7 +131,7 @@ h2 {
 
 .modal-metatest-box{
   width: 700px;
-  justify-content: start;
+  /* justify-content: flex-start; */
 }
 .modal-metatest-content {
   padding: 20px;
@@ -146,6 +146,7 @@ h2 {
 }
 .modal-metatest-content.comment {
   margin-bottom: 60px;
+  white-space:pre-wrap;
 }
 .modal-metatest-content dd {
   padding: 20px;
@@ -212,6 +213,7 @@ h2 {
   
   .modal-metatest-title{
     width: 300px;
+    margin-left: 200px;
   }
   .modal-metatest-list{
     width: 700px;
