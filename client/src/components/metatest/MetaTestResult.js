@@ -26,14 +26,14 @@ function MetaTestResult({ expactedAnswer, result, handleOpenMetaTest }) {
         expactedAnswerNum === resultNum + 1 ||
         expactedAnswerNum === resultNum - 1
       ) {
-        setComment("스스로를 잘 파악하고 계시네요.\n$sudo 33Plan install -g");
+        setComment("스스로를 잘 파악하고 계시네요!\n$sudo 33Plan install -g");
       } else if (
         expactedAnswerNum < resultNum ||
         expactedAnswerNum < resultNum 
       ) {
         setComment("과감하게 도전하세요!\n33Plan이 응원합니다.");
       } else {
-        setComment("목표를 조금만 낮추세요.\n33Plan이 도와드립니다.");
+        setComment("목표를 조금만 낮추세요!\n33Plan이 도와드립니다.");
       }
       setLoading(true);
     } catch (e) {
