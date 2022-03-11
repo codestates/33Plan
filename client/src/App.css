@@ -409,9 +409,12 @@
     padding: 0px;
   }
   .footer {
-    height: 50vh;
+    height: 58vh;
   }
-  .logo-img {
+  .footer-title{
+    font-size: 12px;
+  }
+  .logo-img{
     width: 60px;
   }
   .card-font {
