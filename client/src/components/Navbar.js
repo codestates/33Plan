@@ -50,10 +50,20 @@ function Navbar({ isLogin, handleLogout }) {
           </>
         ) : (
           <>
-            <Link to="/signup">
+            <Link
+              to="/signup"
+              style={{
+                textDecoration: "none",
+              }}
+            >
               <div className="nav-item">Sign-Up</div>
             </Link>
-            <Link to="/login">
+            <Link
+              to="/login"
+              style={{
+                textDecoration: "none",
+              }}
+            >
               <div className="nav-item">Sign-In</div>
             </Link>
           </>

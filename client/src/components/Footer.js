@@ -6,7 +6,7 @@ function Footer() {
   return (
     <div>
       <nav  className="footer">
-        <div className="footer-title">Copyright@Wooga</div>
+        <div className="footer-title">Copyrightⓒ2022 Wooga All rights reserved</div>
         <div className="footer-container">
           <div className="footer-item">
             <span>Backend : 김현규</span>
