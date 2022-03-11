@@ -93,8 +93,8 @@ function Plannerpage({ userInfo }) {
     const plan = getPlan(todos, todoId);
 
     // console.log(todos);
-    console.log("유저정보: ", planUserInfo);
-    console.log("플랜: ", plan);
+    // console.log("유저정보: ", planUserInfo);
+    // console.log("플랜: ", plan);
 
     if (todos && planUserInfo) {
       axios
