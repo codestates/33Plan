@@ -48,15 +48,15 @@ function Signin({ handleResponseSuccess }) {
   const handleLogin = () => {
     const { email, password } = loginInfo;
     if (!email || !password) {
-      setErrorMessage("이메일과 비밀번호를 입력하세요")
-      let minutTimer =  setTimeout(()=>  setErrorMessage(""),2000);
+      setErrorMessage("이메일과 비밀번호를 입력하세요");
+      let minutTimer = setTimeout(() => setErrorMessage(""), 2000);
       return () => {
         clearTimeout(minutTimer);
       };
       // 이메일 유효성 검사
     } else if (!validateFuntion.Email(email)) {
       setErrorEmail("이메일 형식에 맞지 않습니다.");
-      let minutTimer =  setTimeout(()=>  setErrorEmail(""),2000);
+      let minutTimer = setTimeout(() => setErrorEmail(""), 2000);
       return () => {
         clearTimeout(minutTimer);
       };
@@ -65,7 +65,7 @@ function Signin({ handleResponseSuccess }) {
       setErrorPassword(
         "비밀번호를 문자,숫자,특수문자를 포함한 8자리 이상이여야 합니다."
       );
-      let minutTimer =  setTimeout(()=>  setErrorPassword(""),2000);
+      let minutTimer = setTimeout(() => setErrorPassword(""), 2000);
       return () => {
         clearTimeout(minutTimer);
       };
@@ -112,12 +112,21 @@ function Signin({ handleResponseSuccess }) {
               onChange={handleInputValue("password")}
             />
           </dl>
-          <Link to="/signup">
+          <Link
+            to="/signup"
+            style={{
+              textDecoration: "none", color: "black"
+            }}
+          >
             <div className="sign-form">
               <div>회원가입</div>
             </div>
           </Link>
-          <button className="sign-btn magin" type="submit" onClick={handleLogin}>
+          <button
+            className="sign-btn magin"
+            type="submit"
+            onClick={handleLogin}
+          >
             로그인
           </button>
           <div className="margin">
