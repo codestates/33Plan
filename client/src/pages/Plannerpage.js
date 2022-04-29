@@ -131,14 +131,18 @@ function Plannerpage({ userInfo }) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if (todo !== "" && todos.length < 3) {
-      setTodos([...todos, { id: Date.now(), text: todo.trim() }]);
-      setTodo("");
-    } else if (todo === "") {
-      alert("할 일을 작성해주세요");
-    } else if (todos.length === 3) {
-      setTodo("");
-      alert("할 일을 모두 작성하셨어요~^0^");
+    if (!planUserInfo.email){
+      alert("로그인이 필요한 기능입니다")
+    } else {
+      if (todo !== "" && todos.length < 3) {
+        setTodos([...todos, { id: Date.now(), text: todo.trim() }]);
+        setTodo("");
+      } else if (todo === "") {
+        alert("할 일을 작성해주세요");
+      } else if (todos.length === 3) {
+        setTodo("");
+        alert("할 일을 모두 작성하셨어요~^0^");
+      }
     }
   };
 
@@ -184,17 +188,6 @@ function Plannerpage({ userInfo }) {
     setFindData(!findData)
   }
 
-  if (!planUserInfo.email) {
-    return (
-      <div className="planner planner-logout">
-        <div className="plan-container">
-          <div className="plan-container-logout">
-            <h2>로그인이 필요한 페이지 입니다.</h2>
-          </div>
-        </div>
-      </div>
-    );
-  }
   return (
     <>
       <div className="planner">
